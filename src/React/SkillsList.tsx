@@ -38,18 +38,43 @@ const SkillsList = () => {
 
   const skills = {
     "Web Development": [
-      "Single Page Applications (SPAs)",
-      "Landing pages and business websites",
-      "Portfolio websites",
+      "RESTful API Development with Laravel (PHP) and Spring Boot (Java)",
+      "Single Page Applications (SPAs) with Vue.js",
+      "Full-stack development with PHP, Java, Vue.js",
+      "Secure Authentication (JWT) and Role-Based Access Control (RBAC)",
+      "Dockerized application deployments",
     ],
-    "Mobile Development": [
-      "Mobile-friendly web apps",
-      "React Native mobile apps",
+    "Backend Development": [
+      "Backend systems with Java (Spring Boot) and PHP (Laravel)",
+      "Database design and optimization (MySQL, Oracle SQL Developer)",
+      "Development of Unit and Integration Tests (JUnit, PHPUnit)",
+      "Secure coding practices (input validation, error handling)",
     ],
-    "UI/UX Design & Prototyping": [
-      "UI design with Figma & Canva",
-      "UX research & improvements",
-      "Prototyping for websites & mobile apps",
+    "Cybersecurity & DevSecOps": [
+      "Penetration Testing basics (Kali Linux tools)",
+      "Wireshark network traffic analysis",
+      "Docker container security practices",
+      "Basic scripting for automation (Bash, Powershell)",
+      "Risk Management and Secure Software Development Lifecycle (SSDLC)",
+    ],
+    "Software Development Fundamentals": [
+      "Data Structures and Algorithms (C++, Python, Java)",
+      "Object-Oriented Programming (OOP) principles",
+      "Version control with Git/GitHub (team-based workflows)",
+      "SCRUM Agile Methodology",
+      "Technical Documentation and Code Reviews",
+    ],
+    "Infrastructure & Deployment": [
+      "Ubuntu Server management and deployments",
+      "Docker containerization for application environments",
+      "Basic Bash scripting for server automation",
+      "Using GitHub Actions (if you want to mention CI/CD pipelines soon)",
+    ],
+    "Soft Skills": [
+      "Team collaboration and leadership (academic mentoring and SCRUM)",
+      "Effective time management and project delivery",
+      "Technical teaching and mentorship (Data Structures Tutor)",
+      "Continuous learning and adaptability to emerging technologies",
     ],
   };
 
