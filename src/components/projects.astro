@@ -1,9 +1,10 @@
 ---
 import { Image } from "astro:assets";
-import svgl from "../../public/svgl.png";
-import stockin from "../../public/stockin.png";
-import moviesfordevs from "../../public/moviesfordevs.png";
 import tron from "../../public/tron.png";
+import biescImg from "../../public/biesC-example.png";
+import socImg from "../../public/soc-example.png";
+import biesVm from "../../public/biesVM-example.png";
+
 
 interface Project {
   title: string;
@@ -15,25 +16,25 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "MoviesForDevs",
-    image: moviesfordevs as ImageMetadata,
-    link: "https://github.com/gothsec/MoviesForDevs",
-    preview: "https://movies-for-devs.vercel.app",
-    status: "On Development",
+    title: "Billing & Accounting System",
+    image: socImg as ImageMetadata, 
+    link: "", 
+    preview: "https://drive.google.com/file/d/1UmnxfwXnA_mU_yGjjtnvXGayFwNbqYqH/view?usp=drive_link", 
+    status: "Confidential Project (Deployed)",
   },
   {
-    title: "StockIn",
-    image: stockin as ImageMetadata,
-    link: "https://github.com/gothsec/stockin-demo",
-    preview: "https://stockin-demo.vercel.app",
-    status: "On Development",
+    title: "BIESC - Experimental Compiler",
+    image: biescImg as ImageMetadata, // Usa aquí una imagen genérica o un logo
+    link: "https://github.com/Joscalion04/biesC", // Botón de GitHub
+    preview: "https://github.com/Joscalion04/biesC/blob/main/biesC-example.png", // Botón de Preview
+    status: "Completed",
   },
   {
-    title: "Svgl.app",
-    image: svgl as ImageMetadata,
-    link: "https://github.com/pheralb/svgl",
-    preview: "https://svgl.app",
-    status: "Contributor",
+    title: "BIESVM - Experimental Virtual Machine",
+    image: biesVm as ImageMetadata,
+    link: "https://github.com/Joscalion04/biesVM",
+    preview: "https://github.com/Joscalion04/biesVM/blob/main/biesVM-example.png",
+    status: "Completed",
   },
   {
     title: "Tron Legacy Web",
@@ -117,7 +118,7 @@ const projects: Project[] = [
     </div>
     <a
       target="_blank"
-      href="https://github.com/Gothsec?tab=repositories"
+      href="https://github.com/Joscalion04?tab=repositories"
       aria-label="GitHub"
       class="w-full flex items-center justify-center gap-2 mt-9 text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-[var(--white-icon-tr)] p-3 rounded-full bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
     >
