@@ -1,0 +1,186 @@
+---
+import { useState } from "react";
+import { Image } from "astro:assets";
+import biescImg from "../../public/biesC-example.png";
+import socImg from "../../public/soc-example.png";
+import pcapImg from "../../public/snypshark-example.png";
+import cd_cd from "../../public/ci_cd-example.png";
+import lamp from "../../public/lamp-example.png";
+import ldap from "../../public/OpenLDAP-example.png";
+import cleta from "../../public/cleatEats-example.png";
+
+interface Project {
+  title: string;
+  image: any;
+  link: string;
+  preview: string;
+  status: string;
+  area: string;
+  description: string;
+}
+
+const projects: Project[] = [
+  {
+      "title": "Billing & Accounting System",
+      "image": socImg,
+      "link": "",
+      "preview": "https://drive.google.com/file/d/1UmnxfwXnA_mU_yGjjtnvXGayFwNbqYqH/view?usp=drive_link",
+      "status": "Confidential Project (Deployed)",
+      "area": "Development",
+      "description": "Built a billing & accounting portal with Laravel and Vue.js, managing invoices, users and financial data efficiently."
+    },
+    {
+      "title": "BIES – Experimental Compiler & VM",
+      "image": biescImg,
+      "link": "https://github.com/Joscalion04/biesC",
+      "preview": "https://github.com/Joscalion04/biesC/blob/main/biesC-example.png",
+      "status": "Completed",
+      "area": "Development",
+      "description": "Designed a custom programming language with JavaScript-like syntax and a state-based Virtual Machine to execute transpiled code, using ANTLR4 + Node.js."
+    },
+    {
+      "title": "Fullstack Delivery Management System",
+      "image": cleta,
+      "link": "https://github.com/Joscalion04/ComposeVsReactTechComparison",
+      "preview": "https://github.com/Joscalion04/ComposeVsReactTechComparison",
+      "status": "Completed",
+      "area": "Development",
+      "description": "Developed a fullstack application with Kotlin, Spring Boot, React, Jetpack Compose and Oracle Server, covering backend APIs, frontend interface and mobile components."
+    },
+  {
+    title: "SNYPSHARK PCAP ANALYZER",
+    image: pcapImg,
+    link: "https://github.com/Joscalion04/Snypshark",
+    preview: "https://github.com/Joscalion04/Snypshark",
+    status: "Completed",
+    area: "Cybersecurity",
+    description: "Python CLI tool for analyzing network captures (.pcap/.pcapng) with OSI layer analysis."
+  },
+  {
+    title: "Secure LAMP Server Deployment with Nextcloud and Network Traffic Analysis",
+    image: lamp,
+    link: "https://www.linkedin.com/in/joscalion/details/projects/1743371783472/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
+    preview: "https://www.linkedin.com/in/joscalion/details/projects/1743371783472/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
+    status: "Completed",
+    area: "Cybersecurity",
+    description: "Configured a LAMP stack server with Nextcloud on VirtualBox, implemented Apache firewall rules and conducted network traffic analysis with Wireshark."
+  },
+  {
+    title: "Local CI/CD Pipeline with Jenkins, Docker & Kubernetes",
+    image: cd_cd,
+    link: "",
+    preview: "",
+    status: "Completed",
+    area: "DevOps",
+    description: "Set up a local CI/CD pipeline inside a VM with Jenkins, Docker, and Kubernetes. Triggered automated builds and deployments on git push from remote machine."
+  },
+  {
+    title: "Virtualized Network Environment with LDAP, iptables Firewall & LAMP",
+    image: ldap,
+    link: "https://www.linkedin.com/in/joscalion/details/projects/1756176969204/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
+    preview: "https://www.linkedin.com/in/joscalion/details/projects/1756176969204/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
+    status: "Completed",
+    area: "Cybersecurity",
+    description: "Built a virtualized environment with 4 VMs (firewall, LDAP IAM, client, LAMP server). Configured role-based access and monitored traffic for security enforcement."
+  },
+  {
+    title: "Remote CI/CD with Flask, Docker & Azure",
+    image: cd_cd,
+    link: "https://github.com/Joscalion04/CI-CD_Proyecto",
+    preview: "https://github.com/Joscalion04/CI-CD_Proyecto",
+    status: "Completed",
+    area: "DevOps",
+    description: "Implemented a remote CI/CD pipeline using GitHub hooks → Jenkins → Azure. Deployed a dockerized Python Flask app orchestrated in the cloud."
+  }
+];
+
+
+const areas = [
+  {
+    id: "cybersecurity",
+    title: "Cybersecurity",
+    description: "Security-focused development and penetration testing",
+    skills: ["Penetration Testing", "Network Security", "Risk Management", "Secure SDLC", "Wireshark", "Kali Linux"],
+    color: "from-purple-600 to-blue-600",
+    projects: projects.filter(p => p.area === "Cybersecurity")
+  },
+  {
+    id: "devops",
+    title: "DevOps",
+    description: "Infrastructure automation and deployment pipelines",
+    skills: ["Docker", "CI/CD", "Ubuntu Server", "Kubernetes", "Jenkins", "GCP", "AWS", "OCI"],
+    color: "from-green-600 to-teal-600",
+    projects: projects.filter(p => p.area === "DevOps")
+  },
+  {
+    id: "development",
+    title: "Development",
+    description: "Full-stack application development",
+    skills: ["Java/Spring Boot", "PHP/Laravel", "Vue.js", "MySQL", "React", "Angular", "TypeScript"],
+    color: "from-blue-600 to-indigo-600",
+    projects: projects.filter(p => p.area === "Development")
+  }
+];
+---
+
+<section id="areas" class="py-20 border-t border-[#ffffff10] text-[var(--white)]">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">My Expertise</h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-12">Areas & Projects</h3>
+
+    {areas.map((area) => (
+      <details class="mb-8 group bg-[#1414149c] rounded-2xl border border-[var(--white-icon-tr)] hover:border-[var(--sec)] transition-all">
+        <summary class="cursor-pointer p-6 flex justify-between items-center">
+          <div class="flex items-center">
+            <div class={`p-3 rounded-xl bg-gradient-to-r ${area.color} mr-4`}></div>
+            <h4 class="text-2xl font-semibold">{area.title}</h4>
+          </div>
+          <span class="text-[var(--sec)] text-sm">{area.projects.length} projects</span>
+        </summary>
+
+        <div class="px-6 pb-6">
+          <p class="text-[var(--white-icon)] mb-4">{area.description}</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            {area.skills.map((skill) => (
+              <span class="px-3 py-1 text-sm rounded-full bg-[#ffffff10] text-[var(--white-icon)]">{skill}</span>
+            ))}
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {area.projects.map((project) => (
+              <div class="group">
+                <a href={project.preview} target="_blank" rel="noopener noreferrer" class="block">
+                  <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-3">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      class="w-full h-48 md:h-60 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <h5 class="text-xl font-semibold">{project.title}</h5>
+                  <p class="text-sm text-[var(--white-icon)] py-1">{project.description}</p>
+                  <span class="text-sm text-[var(--white-icon)]">{project.status}</span>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style is:global>
+  .shiny-sec {
+    background: linear-gradient(135deg, #a476ff 25%, #eee5ff 50%, #a476ff 75%);
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 3s linear infinite;
+  }
+  @keyframes shine {
+    0% { background-position: 100% 50%; }
+    30%, 70% { background-position: 0% 50%; }
+  }
+</style>

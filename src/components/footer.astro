@@ -2,7 +2,7 @@
 import LikeButton from "../React/LikeButton.tsx";
 ---
 
-<footer class="w-full py-12 border-t border-[#ffffff10]">
+<footer id="contact" class="w-full py-12 border-t border-[#ffffff10]">
   <div class="max-w-5xl mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10">
       <div class="flex flex-col lg:items-start items-center space-y-6 gap-9">
@@ -20,7 +20,7 @@ import LikeButton from "../React/LikeButton.tsx";
                 label: "LinkedIn",
               },
               {
-                href: "mailto:joscalion04@gmail.com.com",
+                href: "mailto:joscalion04@gmail.com",
                 icon: '<svg xmlns="http://www.w3.org/2000/svg" width="2.1em" height="2.1em" viewBox="0 0 24 24"><path fill="currentColor" d="m18.73 5.41l-1.28 1L12 10.46L6.55 6.37l-1.28-1A2 2 0 0 0 2 7.05v11.59A1.36 1.36 0 0 0 3.36 20h3.19v-7.72L12 16.37l5.45-4.09V20h3.19A1.36 1.36 0 0 0 22 18.64V7.05a2 2 0 0 0-3.27-1.64"/></svg>',
                 label: "Email",
               },
@@ -76,6 +76,15 @@ import LikeButton from "../React/LikeButton.tsx";
               </div>
             ))
           }
+        </div>
+      </div>
+
+      <div class="flex flex-col items-center md:items-start space-y-6">
+        <h4 class="text-lg font-semibold text-[var(--white)]">Development Areas</h4>
+        <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+          <span class="px-3 py-1 text-sm rounded-full bg-purple-500 bg-opacity-20 text-purple-300">Cybersecurity</span>
+          <span class="px-3 py-1 text-sm rounded-full bg-green-500 bg-opacity-20 text-green-300">DevOps</span>
+          <span class="px-3 py-1 text-sm rounded-full bg-blue-500 bg-opacity-20 text-blue-300">Development</span>
         </div>
       </div>
     </div>

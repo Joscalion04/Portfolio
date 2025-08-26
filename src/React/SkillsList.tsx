@@ -37,46 +37,49 @@ const SkillsList = () => {
   const [openItem, setOpenItem] = useState<string | null>(null);
 
   const skills = {
-    "Web Development": [
-      "RESTful API Development with Laravel (PHP) and Spring Boot (Java)",
-      "Single Page Applications (SPAs) with Vue.js",
-      "Full-stack development with PHP, Java, Vue.js",
-      "Secure Authentication (JWT) and Role-Based Access Control (RBAC)",
-      "Dockerized application deployments",
+    "Fullstack & Web Development": [
+      "RESTful API Development (Express.js, Laravel, Spring Boot)",
+      "Frontend frameworks: Angular (RxJS, Material), Vue.js, React",
+      "Authentication & Authorization: JWT (RS256), RBAC, OAuth2",
+      "Database design & optimization (MySQL, Oracle SQL Developer)",
+      "Clean Architecture, modular design, reusable components",
     ],
-    "Backend Development": [
-      "Backend systems with Java (Spring Boot) and PHP (Laravel)",
-      "Database design and optimization (MySQL, Oracle SQL Developer)",
-      "Development of Unit and Integration Tests (JUnit, PHPUnit)",
-      "Secure coding practices (input validation, error handling)",
+    "Backend Engineering": [
+      "Robust backend systems with Java (Spring Boot), PHP (Laravel), Node.js (Express.js)",
+      "Unit, Integration & API Testing (JUnit, PHPUnit, Postman)",
+      "Secure coding practices: input validation, error handling, logging",
+      "Cloud-ready backend deployments with Docker & OCI",
     ],
     "Cybersecurity & DevSecOps": [
-      "Penetration Testing basics (Kali Linux tools)",
-      "Wireshark network traffic analysis",
-      "Docker container security practices",
-      "Basic scripting for automation (Bash, Powershell)",
-      "Risk Management and Secure Software Development Lifecycle (SSDLC)",
+      "Secure Software Development Lifecycle (SSDLC) & Risk Management",
+      "Penetration Testing basics (OWASP, Kali Linux tools)",
+      "Network analysis with Wireshark & pcap tooling (Snypshark project)",
+      "Container Security (Docker image scanning, best practices)",
+      "Threat Modeling & Secure Authentication strategies",
     ],
-    "Software Development Fundamentals": [
-      "Data Structures and Algorithms (C++, Python, Java)",
-      "Object-Oriented Programming (OOP) principles",
-      "Version control with Git/GitHub (team-based workflows)",
-      "SCRUM Agile Methodology",
-      "Technical Documentation and Code Reviews",
+    "Infrastructure & DevOps": [
+      "CI/CD pipelines (Jenkins, GitHub Actions, Azure, Kubernetes)",
+      "Infrastructure as Code basics & automated deployments",
+      "Ubuntu Server configuration and monitoring",
+      "Dockerized microservices and container orchestration",
+      "Local & remote pipelines for cloud and hybrid deployments",
     ],
-    "Infrastructure & Deployment": [
-      "Ubuntu Server management and deployments",
-      "Docker containerization for application environments",
-      "Basic Bash scripting for server automation",
-      "Using GitHub Actions (if you want to mention CI/CD pipelines soon)",
+    "Software Engineering Fundamentals": [
+      "Data Structures & Algorithms (C++, Java, Python)",
+      "Object-Oriented Programming (OOP) & Design Patterns",
+      "Agile methodologies (SCRUM, sprints, team workflows)",
+      "Version control with Git/GitHub (branching strategies, PRs)",
+      "Technical Documentation & Code Reviews",
     ],
-    "Soft Skills": [
-      "Team collaboration and leadership (academic mentoring and SCRUM)",
-      "Effective time management and project delivery",
-      "Technical teaching and mentorship (Data Structures Tutor)",
-      "Continuous learning and adaptability to emerging technologies",
-    ],
+    "Professional & Soft Skills": [
+      "Technical Leadership & Mentoring (Teaching Assistant, Academic Mentor)",
+      "Effective Communication & Public Speaking",
+      "Problem-Solving & Conflict Resolution",
+      "Team Collaboration & Agile Mindset",
+      "Time Management, Adaptability & Self-Motivation",
+    ]
   };
+
 
   const toggleItem = (item: string) => {
     setOpenItem(openItem === item ? null : item);

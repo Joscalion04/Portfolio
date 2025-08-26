@@ -1,0 +1,96 @@
+---
+interface Certificate {
+  title: string;
+  issuer: string;
+  date: string;
+  credentialLink: string;
+  description: string;
+}
+
+const certificates: Certificate[] = [
+  {
+    title: "Scrum Fundamentals Certified",
+    issuer: "SCRUMstudy",
+    date: "2025",
+    credentialLink: "https://www.scrumstudy.com/certification/verify?type=SFC&number=1075938",
+    description: "Understanding of Scrum roles, events, artifacts, and Scrum framework"
+  },
+  {
+    title: "Introduction to DevOps and Site Reliability Engineering",
+    issuer: "Linux Foundation",
+    date: "2025",
+    credentialLink: "https://www.credly.com/badges/bda72962-d778-498f-b3ce-be96ea62f639/linked_in_profile",
+    description: "Fundamentals of DevOps practices and Site Reliability Engineering principles"
+  },
+  {
+    title: "Introduction to Cloud Infrastructure Technologies",
+    issuer: "Linux Foundation",
+    date: "2025",
+    credentialLink: "https://www.credly.com/badges/afcb3f41-1a12-42a6-a60e-d445aa8c1cda/linked_in_profile",
+    description: "Overview of cloud computing concepts and infrastructure technologies"
+  },
+  {
+    title: "Certified in Cybersecurity",
+    issuer: "ISC2",
+    date: "2025-26",
+    credentialLink: "https://www.credly.com/badges/69cd0d41-11d9-4bc8-8985-7da897d1f942/linked_in_profile",
+    description: "Foundational knowledge in cybersecurity principles and practices"
+  }
+];
+---
+
+<section
+  id="certificates"
+  class="py-20 border-t border-[#ffffff10] text-[var(--white)]"
+>
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">My Credentials</h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-12">Certificates</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {certificates.map((certificate) => (
+        <div class="bg-[#1414149c] rounded-2xl p-6 border border-[var(--white-icon-tr)] hover:border-[var(--sec)] transition-all duration-300">
+          <div class="flex items-center justify-between mb-4">
+            <h4 class="text-xl font-semibold">{certificate.title}</h4>
+            <span class="px-3 py-1 mt-2 md:mt-0 text-sm rounded-full bg-[var(--sec)] bg-opacity-20 text-black">
+              {certificate.date}
+            </span>
+          </div>
+          <p class="text-[var(--white-icon)] mb-2">{certificate.issuer}</p>
+          <p class="text-[var(--white-icon)] text-sm mb-4">{certificate.description}</p>
+          <a 
+            href={certificate.credentialLink} 
+            target="_blank"
+            class="inline-flex items-center text-[var(--sec)] hover:text-[var(--white)] transition-colors duration-300"
+          >
+            View credential
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 ml-1">
+              <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .shiny-sec {
+    background: linear-gradient(135deg, #a476ff 25%, #eee5ff 50%, #a476ff 75%);
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 3s linear infinite;
+  }
+
+  @keyframes shine {
+    0% {
+      background-position: 100% 50%;
+    }
+    30%,
+    70% {
+      background-position: 0% 50%;
+    }
+  }
+</style>

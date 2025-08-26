@@ -1,0 +1,194 @@
+---
+interface ExperienceItem {
+  title: string;
+  company: string;
+  period: string;
+  description: string[];
+  type: "professional" | "extracurricular";
+  skills: string[];
+}
+
+const experiences: ExperienceItem[] = [
+  {
+    title: "JR FULLSTACK ENGINEER",
+    company: "SERKES CONSULTING",
+    period: "Jun 2025 – Present",
+    description: [
+      "Built a billing & accounting portal with Express.js (API) and Angular (Material + RxJS) for reactive, reusable components, versioned with Git/GitHub.",
+      "Developed a secure RESTful API with JWT (RS256) and role-based access control (RBAC), applying secure coding practices.",
+      "Deployed the full system in Docker on Oracle Cloud Infrastructure, ensuring portability and scalability."
+    ],
+    type: "professional",
+    skills: ["Express.js", "Angular", "JWT", "RBAC", "Docker", "Oracle Cloud"]
+  },
+  {
+    title: "TEACHER ASSISTANT AND SOFTWARE DEVELOPMENT TUTOR",
+    company: "NATIONAL UNIVERSITY OF COSTA RICA",
+    period: "Jun 2024 – Jun 2025",
+    description: [
+      "Taught data structures, algorithms, programming paradigms and dynamic memory management.",
+      "Guided practical implementations and projects using C/C++, Python, and Java.",
+      "Introduced design patterns to strengthen students' understanding of software architecture."
+    ],
+    type: "professional",
+    skills: ["C/C++", "Python", "Java", "Data Structures", "Algorithms", "Teaching"]
+  },
+  {
+    title: "SOFTWARE DEVELOPER ACADEMIC COLLABORATION",
+    company: "SINART DIGITAL",
+    period: "Feb 2024 – Jun 2025",
+    description: [
+      "Developed a billing & accounting system with Laravel, Vue.js and GitHub for version control.",
+      "Built a RESTful API with JWT authentication, RBAC, and secure development practices.",
+      "Optimized MySQL performance and containerized deployment using Docker on Ubuntu Server."
+    ],
+    type: "professional",
+    skills: ["Laravel", "Vue.js", "RESTful API", "JWT", "MySQL", "Docker", "Ubuntu Server"]
+  },
+  {
+    title: "Academic Mentor",
+    company: "NATIONAL UNIVERSITY OF COSTA RICA",
+    period: "Feb 2023 – Present",
+    description: [
+      "Mentoring and academic counseling for guidance and introduction to university."
+    ],
+    type: "extracurricular",
+    skills: ["Mentoring", "Counseling", "Education", "Leadership"]
+  },
+  {
+    title: "Volunteer Staff",
+    company: "Cloud Native Computing Foundation (CNCF)",
+    period: "Feb 2025 – May 2025",
+    description: [
+      "Supported event organization and logistics for Kubernetes Community Day Costa Rica."
+    ],
+    type: "extracurricular",
+    skills: ["Community Engagement", "Event Organization", "Cloud Native", "Kubernetes"]
+  }
+];
+
+
+const softSkills = [
+  "Technical Leadership", 
+  "Mentoring", 
+  "Team Collaboration", 
+  "Effective Communication", 
+  "Public Speaking", 
+  "Problem-Solving", 
+  "Agile Mindset", 
+  "Adaptability", 
+  "Empathy", 
+  "Active Listening", 
+  "Conflict Resolution", 
+  "Time Management", 
+  "Self-Motivation"
+];
+---
+
+<section
+  id="experience"
+  class="py-20 border-t border-[#ffffff10] text-[var(--white)]"
+>
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">My Journey</h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-12">Experience</h3>
+
+    <div class="mb-12">
+      <h4 class="text-2xl md:text-3xl font-medium mb-8 text-[var(--sec)] shiny-sec">Professional Experience</h4>
+      <div class="space-y-8">
+        {experiences.filter(exp => exp.type === "professional").map((experience) => (
+          <div class="bg-[#1414149c] rounded-2xl p-6 border border-[var(--white-icon-tr)] hover:border-[var(--sec)] transition-all duration-300">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+              <div>
+                <h5 class="text-xl font-semibold">{experience.title}</h5>
+                <p class="text-[var(--white-icon)]">{experience.company}</p>
+              </div>
+              <span class="px-3 py-1 mt-2 md:mt-0 text-sm rounded-full bg-[var(--sec)] bg-opacity-20 text-black">
+                {experience.period}
+              </span>
+            </div>
+            <ul class="mb-4 space-y-2">
+              {experience.description.map((item) => (
+                <li class="text-[var(--white-icon)] flex items-start">
+                  <span class="text-[var(--sec)] mr-2">•</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div class="flex flex-wrap gap-2">
+              {experience.skills.map((skill) => (
+                <span class="px-3 py-1 text-sm rounded-full bg-[#ffffff10] text-[var(--white-icon)]">{skill}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="mb-12">
+      <h4 class="text-2xl md:text-3xl font-medium mb-8 text-[var(--sec)] shiny-sec">Extracurricular Activities</h4>
+      <div class="space-y-8">
+        {experiences.filter(exp => exp.type === "extracurricular").map((experience) => (
+          <div class="bg-[#1414149c] rounded-2xl p-6 border border-[var(--white-icon-tr)] hover:border-[var(--sec)] transition-all duration-300">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+              <div>
+                <h5 class="text-xl font-semibold">{experience.title}</h5>
+                <p class="text-[var(--white-icon)]">{experience.company}</p>
+              </div>
+              <span class="px-3 py-1 mt-2 md:mt-0 text-sm rounded-full bg-[var(--sec)] bg-opacity-20 text-black">
+                {experience.period}
+              </span>
+            </div>
+            <ul class="mb-4 space-y-2">
+              {experience.description.map((item) => (
+                <li class="text-[var(--white-icon)] flex items-start">
+                  <span class="text-[var(--sec)] mr-2">•</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div class="flex flex-wrap gap-2">
+              {experience.skills.map((skill) => (
+                <span class="px-3 py-1 text-sm rounded-full bg-[#ffffff10] text-[var(--white-icon)]">{skill}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <h4 class="text-2xl md:text-3xl font-medium mb-8 text-[var(--sec)] shiny-sec">Soft Skills</h4>
+      <div class="bg-[#1414149c] rounded-2xl p-6 border border-[var(--white-icon-tr)]">
+        <div class="flex flex-wrap gap-3">
+          {softSkills.map((skill) => (
+            <span class="px-4 py-2 rounded-full bg-[#ffffff10] text-[var(--white-icon)] hover:bg-[var(--sec)] hover:bg-opacity-20 hover:text-[var(--sec)] transition-all duration-300">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .shiny-sec {
+    background: linear-gradient(135deg, #a476ff 25%, #eee5ff 50%, #a476ff 75%);
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 3s linear infinite;
+  }
+
+  @keyframes shine {
+    0% {
+      background-position: 100% 50%;
+    }
+    30%,
+    70% {
+      background-position: 0% 50%;
+    }
+  }
+</style>

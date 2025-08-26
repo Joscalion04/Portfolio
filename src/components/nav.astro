@@ -12,18 +12,29 @@ const navItems: NavItem[] = [
     icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M21 20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V9.48907C3 9.18048 3.14247 8.88917 3.38606 8.69972L11.3861 2.47749C11.7472 2.19663 12.2528 2.19663 12.6139 2.47749L20.6139 8.69972C20.8575 8.88917 21 9.18048 21 9.48907V20ZM19 19V9.97815L12 4.53371L5 9.97815V19H19Z"></path></svg>`,
   },
   {
-    label: "Projects",
-    href: "#projects",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M4 5V19H20V7H11.5858L9.58579 5H4ZM12.4142 5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5Z"></path></svg>`,
+    label: "Areas",
+    href: "#areas",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6ZM12 8C14.2091 8 16 9.79086 16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8Z"></path></svg>`,
+  },
+  {
+    label: "Experience",
+    href: "#experience",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M21 18H20V9H21C21.5523 9 22 9.44772 22 10V17C22 17.5523 21.5523 18 21 18ZM19 18H2V10C2 9.44772 2.44772 9 3 9H18V18H19ZM5 11V14H15V11H5ZM4 3C4 2.44772 4.44772 2 5 2H17C17.5523 2 18 2.44772 18 3V7H4V3Z"></path></svg>`,
+  },
+  {
+    label: "Certificates",
+    href: "#certificates",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2C8.13401 2 5 5.13401 5 9V13.2548C5 14.3877 5.27969 15.5031 5.81182 16.5L3 21H21L18.1882 16.5C18.7203 15.5031 19 14.3877 19 13.2548V9C19 5.13401 15.866 2 12 2ZM12 4C14.7614 4 17 6.23858 17 9V13.2548C17 13.8776 16.8725 14.4933 16.6257 15.0625L16.1882 16H7.81182L7.37432 15.0625C7.12754 14.4933 7 13.8776 7 13.2548V9C7 6.23858 9.23858 4 12 4ZM12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"></path></svg>`,
   },
   {
     label: "Contact",
     href: "#contact",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M21.7267 2.95694L16.2734 22.0432C16.1225 22.5716 15.7979 22.5956 15.5563 22.1126L11 13L1.9229 9.36919C1.41322 9.16532 1.41953 8.86022 1.95695 8.68108L21.0432 2.31901C21.5716 2.14285 21.8747 2.43866 21.7267 2.95694ZM19.0353 5.09647L6.81221 9.17085L12.4488 11.4255L15.4895 17.5068L19.0353 5.09647Z"></path></svg>`,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path></svg>`,
   },
 ];
 ---
 
+<!-- El resto del código de navegación se mantiene igual -->
 <div class="flex justify-center w-full">
   <nav
     id="main-nav"
@@ -54,6 +65,8 @@ const navItems: NavItem[] = [
     </div>
   </nav>
 </div>
+
+<!-- El resto del código de estilos y scripts se mantiene igual -->
 <style>
   nav {
     transform: translateX(-50%);
@@ -178,13 +191,52 @@ const navItems: NavItem[] = [
 </script>
 
 <style>
-  @media (max-width: 767px) {
-    body {
-      padding-bottom: 70px;
-    }
+  nav {
+  transform: translateX(-50%);
+  background-color: var(--background);
+  transition:
+    background-color 0.3s ease,
+    border-radius 0.3s ease,
+    border-color 0.3s ease,
+    width 0.3s ease;
+}
+
+/* Estado con scroll */
+nav.scrolling {
+  background-color: var(--component-bg);
+  border-color: #ffffff10;
+  border-radius: 9999px;
+}
+
+/* Indicador verde */
+nav a.active .nav-indicator {
+  transform: translateY(-50%) scale(1);
+  opacity: 1;
+}
+
+/* Link activo */
+nav a.active {
+  color: white !important;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  nav {
+    width: 100% !important;
+    bottom: 0;
+    left: 50%;
+    position: fixed;
+    border-radius: 1rem 1rem 0 0;
+    border-color: #ffffff10;
   }
 
-  nav a.active {
-    color: white !important;
+  nav.scrolling {
+    border-radius: 1rem 1rem 0 0;
+    background-color: var(--component-bg);
   }
+
+  body {
+    padding-bottom: 70px; /* espacio para la nav fija */
+  }
+}
 </style>
