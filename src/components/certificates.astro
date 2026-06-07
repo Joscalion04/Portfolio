@@ -9,32 +9,39 @@ interface Certificate {
 
 const certificates: Certificate[] = [
   {
+    title: "Cybersecurity Analyst",
+    issuer: "Information Risk and Security Institute (IRSI)",
+    date: "2024",
+    credentialLink: "https://www.linkedin.com/in/joscalion/",
+    description: "Focused on OS security, network defense, traffic monitoring, cloud security, penetration testing, digital forensics, incident response, risk management, and security scripting for SOC environments."
+  },
+  {
+    title: "Certified in Cybersecurity (CC)",
+    issuer: "ISC2",
+    date: "2025–26",
+    credentialLink: "https://www.credly.com/badges/69cd0d41-11d9-4bc8-8985-7da897d1f942/linked_in_profile",
+    description: "Foundational knowledge in cybersecurity principles, access controls, network security, and incident response."
+  },
+  {
+    title: "Introduction to DevOps and Site Reliability Engineering",
+    issuer: "Linux Foundation (LFS162)",
+    date: "2025",
+    credentialLink: "https://www.credly.com/badges/bda72962-d778-498f-b3ce-be96ea62f639/linked_in_profile",
+    description: "Fundamentals of DevOps practices, SRE principles, automation, and reliability engineering."
+  },
+  {
+    title: "Introduction to Cloud Infrastructure Technologies",
+    issuer: "Linux Foundation (LFS151)",
+    date: "2025",
+    credentialLink: "https://www.credly.com/badges/afcb3f41-1a12-42a6-a60e-d445aa8c1cda/linked_in_profile",
+    description: "Overview of cloud computing concepts, containers, orchestration, and infrastructure technologies."
+  },
+  {
     title: "Scrum Fundamentals Certified",
     issuer: "SCRUMstudy",
     date: "2025",
     credentialLink: "https://www.scrumstudy.com/certification/verify?type=SFC&number=1075938",
-    description: "Understanding of Scrum roles, events, artifacts, and Scrum framework"
-  },
-  {
-    title: "Introduction to DevOps and Site Reliability Engineering",
-    issuer: "Linux Foundation",
-    date: "2025",
-    credentialLink: "https://www.credly.com/badges/bda72962-d778-498f-b3ce-be96ea62f639/linked_in_profile",
-    description: "Fundamentals of DevOps practices and Site Reliability Engineering principles"
-  },
-  {
-    title: "Introduction to Cloud Infrastructure Technologies",
-    issuer: "Linux Foundation",
-    date: "2025",
-    credentialLink: "https://www.credly.com/badges/afcb3f41-1a12-42a6-a60e-d445aa8c1cda/linked_in_profile",
-    description: "Overview of cloud computing concepts and infrastructure technologies"
-  },
-  {
-    title: "Certified in Cybersecurity",
-    issuer: "ISC2",
-    date: "2025-26",
-    credentialLink: "https://www.credly.com/badges/69cd0d41-11d9-4bc8-8985-7da897d1f942/linked_in_profile",
-    description: "Foundational knowledge in cybersecurity principles and practices"
+    description: "Understanding of Scrum roles, events, artifacts, and the Scrum framework for agile project delivery."
   }
 ];
 ---
@@ -50,16 +57,16 @@ const certificates: Certificate[] = [
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {certificates.map((certificate) => (
         <div class="bg-[#1414149c] rounded-2xl p-6 border border-[var(--white-icon-tr)] hover:border-[var(--sec)] transition-all duration-300">
-          <div class="flex items-center justify-between mb-4">
+          <div class="flex items-start justify-between mb-4 gap-2">
             <h4 class="text-xl font-semibold">{certificate.title}</h4>
-            <span class="px-3 py-1 mt-2 md:mt-0 text-sm rounded-full bg-[var(--sec)] bg-opacity-20 text-black">
+            <span class="px-3 py-1 shrink-0 text-sm rounded-full bg-[var(--sec)] bg-opacity-20 text-black">
               {certificate.date}
             </span>
           </div>
           <p class="text-[var(--white-icon)] mb-2">{certificate.issuer}</p>
           <p class="text-[var(--white-icon)] text-sm mb-4">{certificate.description}</p>
-          <a 
-            href={certificate.credentialLink} 
+          <a
+            href={certificate.credentialLink}
             target="_blank"
             class="inline-flex items-center text-[var(--sec)] hover:text-[var(--white)] transition-colors duration-300"
           >

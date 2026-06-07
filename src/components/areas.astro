@@ -1,13 +1,10 @@
 ---
-import { useState } from "react";
 import { Image } from "astro:assets";
-import biescImg from "../../public/biesC-example.png";
 import socImg from "../../public/soc-example.png";
 import pcapImg from "../../public/snypshark-example.png";
 import cd_cd from "../../public/ci_cd-example.png";
 import lamp from "../../public/lamp-example.png";
 import ldap from "../../public/OpenLDAP-example.png";
-import cleta from "../../public/cleatEats-example.png";
 
 interface Project {
   title: string;
@@ -21,67 +18,40 @@ interface Project {
 
 const projects: Project[] = [
   {
-      "title": "Billing & Accounting System",
-      "image": socImg,
-      "link": "",
-      "preview": "https://drive.google.com/file/d/1UmnxfwXnA_mU_yGjjtnvXGayFwNbqYqH/view?usp=drive_link",
-      "status": "Confidential Project (Deployed)",
-      "area": "Development",
-      "description": "Built a billing & accounting portal with Laravel and Vue.js, managing invoices, users and financial data efficiently."
-    },
-    {
-      "title": "BIES – Experimental Compiler & VM",
-      "image": biescImg,
-      "link": "https://github.com/Joscalion04/biesC",
-      "preview": "https://github.com/Joscalion04/biesC/blob/main/biesC-example.png",
-      "status": "Completed",
-      "area": "Development",
-      "description": "Designed a custom programming language with JavaScript-like syntax and a state-based Virtual Machine to execute transpiled code, using ANTLR4 + Node.js."
-    },
-    {
-      "title": "Fullstack Delivery Management System",
-      "image": cleta,
-      "link": "https://github.com/Joscalion04/ComposeVsReactTechComparison",
-      "preview": "https://github.com/Joscalion04/ComposeVsReactTechComparison",
-      "status": "Completed",
-      "area": "Development",
-      "description": "Developed a fullstack application with Kotlin, Spring Boot, React, Jetpack Compose and Oracle Server, covering backend APIs, frontend interface and mobile components."
-    },
-  {
-    title: "SNYPSHARK PCAP ANALYZER",
+    title: "SNYPSHARK – PCAP Network Analyzer",
     image: pcapImg,
     link: "https://github.com/Joscalion04/Snypshark",
     preview: "https://github.com/Joscalion04/Snypshark",
     status: "Completed",
-    area: "Cybersecurity",
-    description: "Python CLI tool for analyzing network captures (.pcap/.pcapng) with OSI layer analysis."
+    area: "SecOps & Pentesting",
+    description: "Python CLI tool for analyzing network captures (.pcap/.pcapng) with full OSI layer breakdown, anomaly detection, and protocol statistics."
   },
   {
-    title: "Secure LAMP Server Deployment with Nextcloud and Network Traffic Analysis",
+    title: "Secure LAMP Server + Nextcloud & Traffic Analysis",
     image: lamp,
     link: "https://www.linkedin.com/in/joscalion/details/projects/1743371783472/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
     preview: "https://www.linkedin.com/in/joscalion/details/projects/1743371783472/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
     status: "Completed",
-    area: "Cybersecurity",
-    description: "Configured a LAMP stack server with Nextcloud on VirtualBox, implemented Apache firewall rules and conducted network traffic analysis with Wireshark."
+    area: "SecOps & Pentesting",
+    description: "Configured a hardened LAMP stack with Nextcloud on VirtualBox. Implemented Apache firewall rules, SSL, and conducted network traffic analysis using Wireshark."
   },
   {
-    title: "Local CI/CD Pipeline with Jenkins, Docker & Kubernetes",
-    image: cd_cd,
-    link: "",
-    preview: "",
-    status: "Completed",
-    area: "DevOps",
-    description: "Set up a local CI/CD pipeline inside a VM with Jenkins, Docker, and Kubernetes. Triggered automated builds and deployments on git push from remote machine."
-  },
-  {
-    title: "Virtualized Network Environment with LDAP, iptables Firewall & LAMP",
+    title: "Virtualized Network — LDAP, iptables & LAMP",
     image: ldap,
     link: "https://www.linkedin.com/in/joscalion/details/projects/1756176969204/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
     preview: "https://www.linkedin.com/in/joscalion/details/projects/1756176969204/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
     status: "Completed",
-    area: "Cybersecurity",
-    description: "Built a virtualized environment with 4 VMs (firewall, LDAP IAM, client, LAMP server). Configured role-based access and monitored traffic for security enforcement."
+    area: "SecOps & Pentesting",
+    description: "Built a virtualized environment with 4 VMs: iptables firewall, OpenLDAP IAM, client, and LAMP server. Configured role-based access and monitored traffic for security enforcement."
+  },
+  {
+    title: "Hardened CI/CD Pipeline with Jenkins, Docker & Kubernetes",
+    image: cd_cd,
+    link: "",
+    preview: "",
+    status: "Completed",
+    area: "DevSecOps",
+    description: "Local CI/CD pipeline with Jenkins, Docker, and Kubernetes. Integrated security gates, automated scans, and hardened deployment workflows triggered on git push."
   },
   {
     title: "Remote CI/CD with Flask, Docker & Azure",
@@ -89,36 +59,44 @@ const projects: Project[] = [
     link: "https://github.com/Joscalion04/CI-CD_Proyecto",
     preview: "https://github.com/Joscalion04/CI-CD_Proyecto",
     status: "Completed",
-    area: "DevOps",
-    description: "Implemented a remote CI/CD pipeline using GitHub hooks → Jenkins → Azure. Deployed a dockerized Python Flask app orchestrated in the cloud."
+    area: "DevSecOps",
+    description: "Remote CI/CD pipeline using GitHub hooks → Jenkins → Azure. Deployed a Dockerized Python Flask app with security controls and automated compliance checks."
+  },
+  {
+    title: "SOC Platform — Billing & Accounting System",
+    image: socImg,
+    link: "",
+    preview: "https://drive.google.com/file/d/1UmnxfwXnA_mU_yGjjtnvXGayFwNbqYqH/view?usp=drive_link",
+    status: "Confidential (Deployed)",
+    area: "DevSecOps",
+    description: "Secure billing and accounting platform deployed in production. Applied WAF rules, RBAC, secure CI/CD validation, and Wazuh-based monitoring for ongoing security visibility."
   }
 ];
 
-
 const areas = [
   {
-    id: "cybersecurity",
-    title: "Cybersecurity",
-    description: "Security-focused development and penetration testing",
-    skills: ["Penetration Testing", "Network Security", "Risk Management", "Secure SDLC", "Wireshark", "Kali Linux"],
-    color: "from-purple-600 to-blue-600",
-    projects: projects.filter(p => p.area === "Cybersecurity")
+    id: "secops-pentesting",
+    title: "SecOps & Pentesting",
+    description: "Security operations, threat hunting, incident response, and offensive security — translating attack paths into risk-driven remediation.",
+    skills: ["CrowdStrike Falcon", "Wazuh", "Splunk", "Threat Hunting", "Incident Response", "Burp Suite", "Metasploit", "Nmap", "Wireshark", "OWASP Top 10", "MITRE ATT&CK"],
+    color: "from-red-700 to-orange-600",
+    projects: projects.filter(p => p.area === "SecOps & Pentesting")
   },
   {
-    id: "devops",
-    title: "DevOps",
-    description: "Infrastructure automation and deployment pipelines",
-    skills: ["Docker", "CI/CD", "Ubuntu Server", "Kubernetes", "Jenkins", "GCP", "AWS", "OCI"],
-    color: "from-green-600 to-teal-600",
-    projects: projects.filter(p => p.area === "DevOps")
+    id: "vuln-management",
+    title: "Vulnerability Management",
+    description: "End-to-end vulnerability and patch lifecycle: risk-based prioritization, remediation planning, compliance governance, and post-patch validation.",
+    skills: ["Nessus", "OpenVAS", "CrowdStrike Exposure Mgmt", "CVSS Scoring", "ISO 27001", "NIST SP 800", "PCI DSS", "Windows Hardening", "Linux Hardening"],
+    color: "from-purple-700 to-indigo-600",
+    projects: []
   },
   {
-    id: "development",
-    title: "Development",
-    description: "Full-stack application development",
-    skills: ["Java/Spring Boot", "PHP/Laravel", "Vue.js", "MySQL", "React", "Angular", "TypeScript"],
-    color: "from-blue-600 to-indigo-600",
-    projects: projects.filter(p => p.area === "Development")
+    id: "devsecops",
+    title: "DevSecOps",
+    description: "Secure pipeline design, container hardening, Infrastructure as Code, and shifting security left throughout the SDLC.",
+    skills: ["Docker", "Kubernetes", "Jenkins", "GitHub Actions", "Terraform", "Ansible", "Container Scanning", "Secrets Management", "AWS", "Azure"],
+    color: "from-green-700 to-teal-600",
+    projects: projects.filter(p => p.area === "DevSecOps")
   }
 ];
 ---
@@ -135,7 +113,7 @@ const areas = [
             <div class={`p-3 rounded-xl bg-gradient-to-r ${area.color} mr-4`}></div>
             <h4 class="text-2xl font-semibold">{area.title}</h4>
           </div>
-          <span class="text-[var(--sec)] text-sm">{area.projects.length} projects</span>
+          <span class="text-[var(--sec)] text-sm">{area.projects.length > 0 ? `${area.projects.length} projects` : "Operations"}</span>
         </summary>
 
         <div class="px-6 pb-6">
@@ -146,24 +124,33 @@ const areas = [
             ))}
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {area.projects.map((project) => (
-              <div class="group">
-                <a href={project.preview} target="_blank" rel="noopener noreferrer" class="block">
-                  <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-3">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      class="w-full h-48 md:h-60 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <h5 class="text-xl font-semibold">{project.title}</h5>
-                  <p class="text-sm text-[var(--white-icon)] py-1">{project.description}</p>
-                  <span class="text-sm text-[var(--white-icon)]">{project.status}</span>
-                </a>
-              </div>
-            ))}
-          </div>
+          {area.projects.length > 0 && (
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {area.projects.map((project) => (
+                <div class="group">
+                  <a href={project.preview || project.link} target="_blank" rel="noopener noreferrer" class="block">
+                    <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-3">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        class="w-full h-48 md:h-60 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <h5 class="text-xl font-semibold">{project.title}</h5>
+                    <p class="text-sm text-[var(--white-icon)] py-1">{project.description}</p>
+                    <span class="text-sm text-[var(--white-icon)]">{project.status}</span>
+                  </a>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {area.id === "vuln-management" && (
+            <div class="rounded-2xl bg-[#0d0d0d60] border border-[var(--white-icon-tr)] p-5 text-[var(--white-icon)] text-sm leading-relaxed">
+              <p class="mb-2 text-[var(--white)] font-medium">Operational work — not open-source</p>
+              <p>Day-to-day VPM operations are performed in enterprise environments under confidentiality agreements. This includes risk-based patch cycles, exploitability triage, asset criticality mapping, and compliance reporting under ISO 27001 and PCI DSS frameworks at SWAT Consulting Services.</p>
+            </div>
+          )}
         </div>
       </details>
     ))}

@@ -1,34 +1,35 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import type { ReactElement } from "react";
 
-const CategoryIcons = {
-  "Web Development": (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className="w-6 h-6 text-[var(--sec)] opacity-70"
-    >
-      <path d="M21 3C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H21ZM20 11H4V19H20V11ZM20 5H4V9H20V5ZM11 6V8H9V6H11ZM7 6V8H5V6H7Z"></path>
+const CategoryIcons: Record<string, ReactElement> = {
+  "Security Operations (SecOps)": (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-[var(--sec)] opacity-70">
+      <path d="M12 1L3 5v6c0 5.55 4.24 10.74 9 12 4.76-1.26 9-6.45 9-12V5L12 1zm0 2.18l7 3.12V11c0 4.52-2.98 8.69-7 9.93-4.02-1.24-7-5.41-7-9.93V6.3l7-3.12zM11 7v6h2V7h-2zm0 8v2h2v-2h-2z"/>
     </svg>
   ),
-  "Mobile Development": (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className="w-6 h-6 text-[var(--sec)] opacity-70"
-    >
-      <path d="M7 4V20H17V4H7ZM6 2H18C18.5523 2 19 2.44772 19 3V21C19 21.5523 18.5523 22 18 22H6C5.44772 22 5 21.5523 5 21V3C5 2.44772 5.44772 2 6 2ZM12 17C12.5523 17 13 17.4477 13 18C13 18.5523 12.5523 19 12 19C11.4477 19 11 18.5523 11 18C11 17.4477 11.4477 17 12 17Z"></path>
+  "Vulnerability & Patch Management": (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-[var(--sec)] opacity-70">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"/>
     </svg>
   ),
-  "UI/UX Design & Prototyping": (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className="w-6 h-6 text-[var(--sec)] opacity-70"
-    >
-      <path d="M5.7646 7.99998L5.46944 7.26944C5.26255 6.75737 5.50995 6.17454 6.02202 5.96765L15.2939 2.22158C15.8059 2.01469 16.3888 2.26209 16.5956 2.77416L22.2147 16.6819C22.4216 17.194 22.1742 17.7768 21.6622 17.9837L12.3903 21.7298C11.8783 21.9367 11.2954 21.6893 11.0885 21.1772L11.0002 20.9586V21H7.00021C6.44792 21 6.00021 20.5523 6.00021 20V19.7303L2.65056 18.377C2.13849 18.1701 1.89109 17.5873 2.09798 17.0752L5.7646 7.99998ZM8.00021 19H10.2089L8.00021 13.5333V19ZM6.00021 12.7558L4.32696 16.8972L6.00021 17.6084V12.7558ZM7.69842 7.44741L12.5683 19.5008L19.9858 16.5039L15.1159 4.45055L7.69842 7.44741ZM10.6766 9.47974C10.1645 9.68663 9.5817 9.43924 9.37481 8.92717C9.16792 8.4151 9.41532 7.83227 9.92739 7.62538C10.4395 7.41849 11.0223 7.66588 11.2292 8.17795C11.4361 8.69002 11.1887 9.27286 10.6766 9.47974Z"></path>
+  "Penetration Testing & Red Team": (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-[var(--sec)] opacity-70">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/>
+    </svg>
+  ),
+  "Security Architecture & Defense": (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-[var(--sec)] opacity-70">
+      <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+    </svg>
+  ),
+  "Cloud & DevSecOps": (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-[var(--sec)] opacity-70">
+      <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
+    </svg>
+  ),
+  "Programming & Automation": (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-[var(--sec)] opacity-70">
+      <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
     </svg>
   ),
 };
@@ -36,50 +37,50 @@ const CategoryIcons = {
 const SkillsList = () => {
   const [openItem, setOpenItem] = useState<string | null>(null);
 
-  const skills = {
-    "Fullstack & Web Development": [
-      "RESTful API Development (Express.js, Laravel, Spring Boot)",
-      "Frontend frameworks: Angular (RxJS, Material), Vue.js, React",
-      "Authentication & Authorization: JWT (RS256), RBAC, OAuth2",
-      "Database design & optimization (MySQL, Oracle SQL Developer)",
-      "Clean Architecture, modular design, reusable components",
+  const skills: Record<string, string[]> = {
+    "Security Operations (SecOps)": [
+      "CrowdStrike Falcon Next-Gen SIEM — real-time monitoring, threat hunting & incident response",
+      "SIEM use case development, playbook creation, and SOAR orchestration (Falcon Fusion, Splunk SOAR)",
+      "Threat intelligence integration and security event correlation",
+      "Digital forensics, SOC operations, and MTTR reduction",
+      "Wazuh, FortiSIEM, Elastic SIEM, and Microsoft Sentinel",
     ],
-    "Backend Engineering": [
-      "Robust backend systems with Java (Spring Boot), PHP (Laravel), Node.js (Express.js)",
-      "Unit, Integration & API Testing (JUnit, PHPUnit, Postman)",
-      "Secure coding practices: input validation, error handling, logging",
-      "Cloud-ready backend deployments with Docker & OCI",
+    "Vulnerability & Patch Management": [
+      "End-to-end VPM across Windows (Server/Endpoint) and Linux (Ubuntu, Debian, SUSE, Arch)",
+      "Risk-based prioritization combining CVSS, exploitability context, and asset criticality",
+      "Post-patch validation, impact analysis, and service continuity assurance",
+      "CrowdStrike Falcon Exposure Management, Nessus, and OpenVAS (Greenbone)",
+      "Compliance-aligned governance under ISO/IEC 27001, NIST SP 800, and PCI DSS",
     ],
-    "Cybersecurity & DevSecOps": [
-      "Secure Software Development Lifecycle (SSDLC) & Risk Management",
-      "Penetration Testing basics (OWASP, Kali Linux tools)",
-      "Network analysis with Wireshark & pcap tooling (Snypshark project)",
-      "Container Security (Docker image scanning, best practices)",
-      "Threat Modeling & Secure Authentication strategies",
+    "Penetration Testing & Red Team": [
+      "Web application and API security testing (OWASP Top 10, MITRE ATT&CK)",
+      "Network reconnaissance & exploitation: Nmap, Metasploit, Impacket, CrackMapExec",
+      "Web assessment tools: Burp Suite, OWASP ZAP, SQLmap, Gobuster, Nikto, Dirsearch",
+      "AD attack paths: BloodHound, Responder, Enum4linux, SMBMap",
+      "OSINT & recon: Maltego, Recon-ng, theHarvester, Fierce, Shodan",
     ],
-    "Infrastructure & DevOps": [
-      "CI/CD pipelines (Jenkins, GitHub Actions, Azure, Kubernetes)",
-      "Infrastructure as Code basics & automated deployments",
-      "Ubuntu Server configuration and monitoring",
-      "Dockerized microservices and container orchestration",
-      "Local & remote pipelines for cloud and hybrid deployments",
+    "Security Architecture & Defense": [
+      "Fortinet Security Fabric — FortiGate, FortiAnalyzer, FortiSIEM, FortiOS",
+      "Sophos Central, Sophos Intercept X, and Sophos Firewall administration",
+      "Zero Trust Architecture (ZTA), network segmentation, and NAC concepts",
+      "Active Directory security, privilege management, and IAM governance",
+      "Defense-in-Depth, IDS/IPS architecture, and secure hybrid infrastructure",
     ],
-    "Software Engineering Fundamentals": [
-      "Data Structures & Algorithms (C++, Java, Python)",
-      "Object-Oriented Programming (OOP) & Design Patterns",
-      "Agile methodologies (SCRUM, sprints, team workflows)",
-      "Version control with Git/GitHub (branching strategies, PRs)",
-      "Technical Documentation & Code Reviews",
+    "Cloud & DevSecOps": [
+      "AWS and Azure security posture management",
+      "Secure CI/CD pipelines with GitHub Actions, GitLab CI/CD, and Jenkins",
+      "Container image scanning, Kubernetes security policies, and secrets management",
+      "Infrastructure as Code (Terraform, Ansible) with security controls",
+      "Dependency scanning, SAST/DAST integration, and secure SDLC practices",
     ],
-    "Professional & Soft Skills": [
-      "Technical Leadership & Mentoring (Teaching Assistant, Academic Mentor)",
-      "Effective Communication & Public Speaking",
-      "Problem-Solving & Conflict Resolution",
-      "Team Collaboration & Agile Mindset",
-      "Time Management, Adaptability & Self-Motivation",
-    ]
+    "Programming & Automation": [
+      "Python, Bash, PowerShell — security automation and log parsing",
+      "AWK, Regex, YAML/JSON for pipeline and threat intelligence automation",
+      "Go, Rust, TypeScript, C/C++ for tooling and system-level scripting",
+      "REST API integrations for threat intelligence enrichment",
+      "Network traffic analysis tooling: Wireshark, Zeek, Scapy, Suricata, Snort",
+    ],
   };
-
 
   const toggleItem = (item: string) => {
     setOpenItem(openItem === item ? null : item);

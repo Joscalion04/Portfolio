@@ -1,11 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import tron from "../../public/tron.png";
-import biescImg from "../../public/biesC-example.png";
+import pcapImg from "../../public/snypshark-example.png";
 import socImg from "../../public/soc-example.png";
-import biesVm from "../../public/biesVM-example.png";
-import spring from "../../public/spring-example.png";
-
+import lamp from "../../public/lamp-example.png";
+import ldap from "../../public/OpenLDAP-example.png";
 
 interface Project {
   title: string;
@@ -17,32 +15,32 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Billing & Accounting System",
-    image: socImg as ImageMetadata, 
-    link: "", 
-    preview: "https://drive.google.com/file/d/1UmnxfwXnA_mU_yGjjtnvXGayFwNbqYqH/view?usp=drive_link", 
+    title: "SNYPSHARK – PCAP Network Analyzer",
+    image: pcapImg as ImageMetadata,
+    link: "https://github.com/Joscalion04/Snypshark",
+    preview: "https://github.com/Joscalion04/Snypshark",
+    status: "Completed · Open Source",
+  },
+  {
+    title: "Secure LAMP Server + Traffic Analysis",
+    image: lamp as ImageMetadata,
+    link: "https://www.linkedin.com/in/joscalion/details/projects/1743371783472/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
+    preview: "https://www.linkedin.com/in/joscalion/details/projects/1743371783472/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
+    status: "Completed",
+  },
+  {
+    title: "Virtualized Network — LDAP, iptables & LAMP",
+    image: ldap as ImageMetadata,
+    link: "https://www.linkedin.com/in/joscalion/details/projects/1756176969204/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
+    preview: "https://www.linkedin.com/in/joscalion/details/projects/1756176969204/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
+    status: "Completed",
+  },
+  {
+    title: "SOC Platform — Billing & Accounting System",
+    image: socImg as ImageMetadata,
+    link: "",
+    preview: "https://drive.google.com/file/d/1UmnxfwXnA_mU_yGjjtnvXGayFwNbqYqH/view?usp=drive_link",
     status: "Confidential Project (Deployed)",
-  },
-  {
-    title: "BIESC - Experimental Compiler",
-    image: biescImg as ImageMetadata, // Usa aquí una imagen genérica o un logo
-    link: "https://github.com/Joscalion04/biesC", // Botón de GitHub
-    preview: "https://github.com/Joscalion04/biesC/blob/main/biesC-example.png", // Botón de Preview
-    status: "Completed",
-  },
-  {
-    title: "BIESVM - Experimental Virtual Machine",
-    image: biesVm as ImageMetadata,
-    link: "https://github.com/Joscalion04/biesVM",
-    preview: "https://github.com/Joscalion04/biesVM/blob/main/biesVM-example.png",
-    status: "Completed",
-  },
-  {
-    title: "Management and Invoicing System",
-    image: spring as ImageMetadata,
-    link: "https://github.com/Joscalion04/Sistema-de-Gestion-de-Facturas-Electronicas",
-    preview: "https://github.com/Joscalion04/Sistema-de-Gestion-de-Facturas-Electronicas/blob/main/spring-example.png",
-    status: "Completed",
   },
 ];
 ---
@@ -60,7 +58,7 @@ const projects: Project[] = [
         projects.map((project) => (
           <div class="group">
             <a
-              href={project.preview}
+              href={project.preview || project.link}
               target="_blank"
               rel="noopener noreferrer"
               class="block"
@@ -80,24 +78,26 @@ const projects: Project[] = [
                   </span>
                 </div>
                 <div class="flex gap-2 ml-auto">
-                  <a
-                    target="_blank"
-                    href={project.link}
-                    aria-label="GitHub"
-                    class="size-14 flex justify-center items-center text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      class="size-7"
+                  {project.link && (
+                    <a
+                      target="_blank"
+                      href={project.link}
+                      aria-label="GitHub"
+                      class="size-14 flex justify-center items-center text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
                     >
-                      <path d="M24 12L18.3431 17.6569L16.9289 16.2426L21.1716 12L16.9289 7.75736L18.3431 6.34315L24 12ZM2.82843 12L7.07107 16.2426L5.65685 17.6569L0 12L5.65685 6.34315L7.07107 7.75736L2.82843 12ZM9.78845 21H7.66009L14.2116 3H16.3399L9.78845 21Z" />
-                    </svg>
-                  </a>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="size-7"
+                      >
+                        <path d="M24 12L18.3431 17.6569L16.9289 16.2426L21.1716 12L16.9289 7.75736L18.3431 6.34315L24 12ZM2.82843 12L7.07107 16.2426L5.65685 17.6569L0 12L5.65685 6.34315L7.07107 7.75736L2.82843 12ZM9.78845 21H7.66009L14.2116 3H16.3399L9.78845 21Z" />
+                      </svg>
+                    </a>
+                  )}
                   <a
                     target="_blank"
-                    href={project.preview}
+                    href={project.preview || project.link}
                     aria-label="Preview"
                     class="size-14 flex justify-center items-center text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
                   >
