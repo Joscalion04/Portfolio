@@ -10,61 +10,66 @@ const { title } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Software Engineer" />
+    <meta name="description" content="SecOps Engineer · Pentester · Cybersecurity Specialist — Joseph Leon Cabezas" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta property="og:title" content="Joseph Leon" />
-    <meta property="og:description" content="Software Engineer" />
+    <meta property="og:title" content="Joseph Leon Cabezas — SecOps Engineer" />
+    <meta property="og:description" content="SecOps Engineer · Pentester · Vulnerability Management · OSINT & DarkINT" />
     <meta property="og:image" content="https://joscalionportfolio.vercel.app/wallpaper-shortcut.png" />
     <meta property="og:url" content="https://joscalionportfolio.vercel.app/" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Joseph Leon Portfolio" />
+    <meta property="og:site_name" content="Joseph Leon — SecOps" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500;700&display=swap"
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500;700&display=swap"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500;700&display=swap"
       />
     </noscript>
 
     <title>{title}</title>
   </head>
-  <body class="bg-[--background] md:px-48 lg:px-20 px-9">
+  <body class="bg-[var(--background)] md:px-48 lg:px-20 px-9">
+    <div class="grid-bg" aria-hidden="true"></div>
     <slot />
   </body>
 </html>
 
 <style is:global>
   :root {
-    --background: #101010;
+    --background: #09090f;
     --sec: #a476ff;
-    --white: #dfdfdf;
+    --red: #ff3a3a;
+    --green: #00ff87;
+    --white: #e8e8e8;
     --white-icon: #f3f3f398;
     --white-icon-tr: #f3f3f310;
+    --terminal-bg: #0d0d16;
+    --mono: "JetBrains Mono", "Fira Code", monospace;
   }
 
   * {
-    font-family:
-      "montserrat",
-      -apple-system,
-      system-ui,
-      sans-serif;
+    font-family: "Montserrat", -apple-system, system-ui, sans-serif;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+  }
+
+  .mono, code, .font-mono {
+    font-family: var(--mono) !important;
   }
 
   *::selection {
@@ -72,29 +77,139 @@ const { title } = Astro.props;
     color: var(--background);
   }
 
-  /* Scrollbar styles */
-
-  ::-webkit-scrollbar {
-    width: 15px;
+  .grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(164, 118, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(164, 118, 255, 0.04) 1px, transparent 1px);
+    background-size: 44px 44px;
+    pointer-events: none;
+    z-index: 0;
   }
 
-  ::-webkit-scrollbar-track {
-    background: var(--container);
-    border-radius: 30px;
+  body > *:not(.grid-bg) {
+    position: relative;
+    z-index: 1;
   }
 
-  ::-webkit-scrollbar-thumb {
-    background: var(--background);
-    border-radius: 10px;
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--background); }
+  ::-webkit-scrollbar-thumb { background: #ffffff18; border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--sec); }
+  * { scrollbar-width: thin; scrollbar-color: #ffffff18 var(--background); }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  @keyframes shine {
+    0% { background-position: 100% 50%; }
+    30%, 70% { background-position: 0% 50%; }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--pink);
+  .shiny-sec {
+    background: linear-gradient(135deg, #a476ff 25%, #eee5ff 50%, #a476ff 75%);
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 3s linear infinite;
   }
 
-  /* Scrollbar styles for Firefox */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--line) var(--container);
+  .shiny-red {
+    background: linear-gradient(135deg, #ff3a3a 25%, #ffaaaa 50%, #ff3a3a 75%);
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 3s linear infinite;
+  }
+
+  .terminal-cursor::after {
+    content: '_';
+    animation: blink 1s step-end infinite;
+    color: var(--sec);
+  }
+
+  .status-active {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .status-active::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse-dot 2s ease-in-out infinite;
+    box-shadow: 0 0 6px var(--green);
+    flex-shrink: 0;
+  }
+
+  .tag-red {
+    background: rgba(255, 58, 58, 0.12);
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 58, 58, 0.25);
+  }
+  .tag-green {
+    background: rgba(0, 255, 135, 0.08);
+    color: #00ff87;
+    border: 1px solid rgba(0, 255, 135, 0.2);
+  }
+  .tag-purple {
+    background: rgba(164, 118, 255, 0.12);
+    color: #c4a1ff;
+    border: 1px solid rgba(164, 118, 255, 0.25);
+  }
+  .tag-gray {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--white-icon);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sec);
+    opacity: 0.7;
+  }
+
+  .terminal-window {
+    background: var(--terminal-bg);
+    border: 1px solid rgba(164, 118, 255, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .terminal-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .terminal-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
   }
 </style>

@@ -1,0 +1,174 @@
+---
+---
+
+<section id="community" class="py-20 border-t border-[#ffffff10] text-[var(--white)]">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="flex items-center gap-3 mb-2">
+      <span class="section-label">// Initiatives & Community</span>
+      <div class="flex-1 h-px bg-[var(--white-icon-tr)]"></div>
+    </div>
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">Beyond the Job</h2>
+    <h3 class="text-4xl md:text-5xl font-bold mb-12">Initiatives & Community</h3>
+
+    <!-- OpenVector Intelligence — Featured Initiative -->
+    <div class="mb-10">
+      <span class="mono text-xs text-[var(--red)] opacity-80 tracking-widest uppercase">// Featured Initiative</span>
+      <div class="mt-4 relative terminal-window border-l-4 border-l-[var(--red)] overflow-hidden">
+        <!-- background decoration -->
+        <div class="absolute inset-0 bg-gradient-to-br from-[rgba(255,58,58,0.04)] to-transparent pointer-events-none"></div>
+        <div class="p-6 md:p-8 space-y-4 relative">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+            <div class="space-y-1">
+              <div class="flex items-center gap-3">
+                <span class="tag-red mono text-xs px-2 py-0.5 rounded">INITIATIVE</span>
+                <span class="status-active text-[var(--green)] text-xs">Active</span>
+              </div>
+              <h4 class="text-3xl font-bold mt-2">OpenVector Intelligence</h4>
+              <p class="mono text-sm text-[var(--sec)] opacity-80">Threat Hunting · Digital Footprint Analysis · DarkINT Research</p>
+            </div>
+            <div class="shrink-0 border border-[rgba(255,58,58,0.3)] rounded-xl p-4 bg-[rgba(255,58,58,0.05)] text-center min-w-[120px]">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8 text-[var(--red)] mx-auto mb-1">
+                <path d="M12 1L3 5v6c0 5.55 4.24 10.74 9 12 4.76-1.26 9-6.45 9-12V5L12 1zm0 2.18l7 3.12V11c0 4.52-2.98 8.69-7 9.93-4.02-1.24-7-5.41-7-9.93V6.3l7-3.12zM11 7v6h2V7h-2zm0 8v2h2v-2h-2z"/>
+              </svg>
+              <span class="mono text-xs text-[var(--white-icon)]">Threat Intel</span>
+            </div>
+          </div>
+
+          <p class="text-[var(--white-icon)] leading-relaxed max-w-3xl">
+            OpenVector Intelligence is a threat hunting and digital intelligence initiative focused on
+            <strong class="text-[var(--white)]">adversary tracking, digital footprint analysis, and DarkINT research</strong>.
+            Operations include deep web and dark web monitoring, Tor network investigations for threat intelligence gathering,
+            OSINT-driven adversary profiling, and digital exposure assessment for individuals and organizations.
+            The goal: surface hidden threats before they materialize.
+          </p>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { icon: "🌐", label: "OSINT Ops", sub: "Open-source intelligence gathering" },
+              { icon: "🧅", label: "Tor/DarkINT", sub: "Dark web threat investigations" },
+              { icon: "🔍", label: "Digital Footprint", sub: "Exposure & identity mapping" },
+              { icon: "🎯", label: "Adversary Intel", sub: "Profiling & attribution" },
+            ].map(item => (
+              <div class="bg-[rgba(255,58,58,0.05)] border border-[rgba(255,58,58,0.15)] rounded-xl p-3 text-center space-y-1">
+                <span class="text-2xl">{item.icon}</span>
+                <p class="mono text-xs font-bold text-[var(--white)]">{item.label}</p>
+                <p class="text-xs text-[var(--white-icon)]">{item.sub}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="flex flex-wrap gap-1.5">
+            {["OSINT", "DarkINT", "Tor Network", "Digital Footprint", "Adversary Profiling",
+              "Maltego", "Shodan", "Recon-ng", "theHarvester", "Dark Web Monitoring", "Threat Intel"].map(tag => (
+              <span class="mono text-xs px-2 py-0.5 rounded tag-red">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Speaking -->
+    <div class="mb-10">
+      <span class="mono text-xs text-[var(--sec)] opacity-60 tracking-widest uppercase">// Speaking</span>
+      <div class="mt-4">
+        <div class="terminal-window border-l-4 border-l-[var(--green)] p-5 md:p-6">
+          <div class="flex flex-col md:flex-row md:items-center gap-4">
+            <div class="shrink-0 w-14 h-14 rounded-xl bg-[rgba(0,255,135,0.08)] border border-[rgba(0,255,135,0.2)] flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-7 text-[var(--green)]">
+                <path d="M2 3.993A1 1 0 0 1 2.992 3h18.016c.548 0 .992.445.992.993v16.014a1 1 0 0 1-.992.993H2.992A.993.993 0 0 1 2 20.007V3.993zM4 5v14h16V5H4zm6.622 3.415l4.879 3.252a.4.4 0 0 1 0 .666l-4.88 3.252a.4.4 0 0 1-.621-.332V8.747a.4.4 0 0 1 .622-.332z"/>
+              </svg>
+            </div>
+            <div class="flex-1 space-y-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="tag-green mono text-xs px-2 py-0.5 rounded">SPEAKER</span>
+                <span class="mono text-xs text-[var(--white-icon)] opacity-50">2026</span>
+              </div>
+              <h4 class="text-xl font-bold">Technical Speaker — Google Developers Group (GDG)</h4>
+              <p class="text-sm text-[var(--white-icon)]">
+                Delivered a technical session for the GDG Costa Rica community covering cloud security practices,
+                DevSecOps integration, and real-world threat scenarios.
+              </p>
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                {["Cloud Security", "DevSecOps", "Public Speaking", "GDG Costa Rica"].map(tag => (
+                  <span class="mono text-xs px-2 py-0.5 rounded tag-green">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Community Volunteering -->
+    <div>
+      <span class="mono text-xs text-[var(--sec)] opacity-60 tracking-widest uppercase">// Community Contributions</span>
+      <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <div class="terminal-window p-5 space-y-3 hover:border-[rgba(255,58,58,0.3)] transition-all duration-300 group">
+          <div class="w-10 h-10 rounded-lg bg-[rgba(255,58,58,0.1)] border border-[rgba(255,58,58,0.2)] flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 text-[var(--red)]">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+            </svg>
+          </div>
+          <div>
+            <span class="tag-red mono text-xs px-2 py-0.5 rounded">VOLUNTEER</span>
+            <h4 class="font-bold mt-2">PwnedCR</h4>
+            <p class="text-sm text-[var(--sec)]">Cybersecurity Community</p>
+          </div>
+          <p class="text-sm text-[var(--white-icon)]">
+            Active contributor to Costa Rica's offensive and defensive security community — CTF collaboration,
+            knowledge sharing, and mentoring security practitioners.
+          </p>
+          <div class="flex flex-wrap gap-1">
+            {["CTF", "Offensive Sec", "Community"].map(t => (
+              <span class="mono text-xs px-1.5 py-0.5 rounded tag-red">{t}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="terminal-window p-5 space-y-3 hover:border-[rgba(164,118,255,0.3)] transition-all duration-300 group">
+          <div class="w-10 h-10 rounded-lg bg-[rgba(164,118,255,0.1)] border border-[rgba(164,118,255,0.2)] flex items-center justify-center">
+            <img src="/svg/kubernetes.svg" alt="Kubernetes" class="h-5 w-5 opacity-70" />
+          </div>
+          <div>
+            <span class="tag-purple mono text-xs px-2 py-0.5 rounded">VOLUNTEER</span>
+            <h4 class="font-bold mt-2">KCD Costa Rica 2025</h4>
+            <p class="text-sm text-[var(--sec)]">Cloud Native Computing Foundation</p>
+          </div>
+          <p class="text-sm text-[var(--white-icon)]">
+            Supported logistics, coordination, and attendee experience for Kubernetes Community Day Costa Rica 2025.
+          </p>
+          <div class="flex flex-wrap gap-1">
+            {["CNCF", "Kubernetes", "Event Org"].map(t => (
+              <span class="mono text-xs px-1.5 py-0.5 rounded tag-purple">{t}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="terminal-window p-5 space-y-3 hover:border-[rgba(0,255,135,0.2)] transition-all duration-300 group">
+          <div class="w-10 h-10 rounded-lg bg-[rgba(0,255,135,0.08)] border border-[rgba(0,255,135,0.2)] flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 text-[var(--green)]">
+              <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+            </svg>
+          </div>
+          <div>
+            <span class="tag-green mono text-xs px-2 py-0.5 rounded">VOLUNTEER</span>
+            <h4 class="font-bold mt-2">Google Developers Group</h4>
+            <p class="text-sm text-[var(--sec)]">GDG Costa Rica</p>
+          </div>
+          <p class="text-sm text-[var(--white-icon)]">
+            Volunteer organizer for GDG Costa Rica events. Supporting technical content, logistics, and community growth for developers and security practitioners.
+          </p>
+          <div class="flex flex-wrap gap-1">
+            {["GDG", "Google", "Dev Community"].map(t => (
+              <span class="mono text-xs px-1.5 py-0.5 rounded tag-green">{t}</span>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

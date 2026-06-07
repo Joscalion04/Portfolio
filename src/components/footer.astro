@@ -2,99 +2,143 @@
 import LikeButton from "../React/LikeButton.tsx";
 ---
 
-<footer id="contact" class="w-full py-12 border-t border-[#ffffff10]">
+<footer id="contact" class="w-full py-14 border-t border-[#ffffff10]">
   <div class="max-w-5xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10">
-      <div class="flex flex-col lg:items-start items-center space-y-6 gap-9">
-        <div class="flex space-x-6 sm:space-x-8">
-          {
-            [
-              {
-                href: "//github.com/Joscalion04",
-                icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8"><path d="M12.001 2C6.47598 2 2.00098 6.475 2.00098 12C2.00098 16.425 4.86348 20.1625 8.83848 21.4875C9.33848 21.575 9.52598 21.275 9.52598 21.0125C9.52598 20.775 9.51348 19.9875 9.51348 19.15C7.00098 19.6125 6.35098 18.5375 6.15098 17.975C6.03848 17.6875 5.55098 16.8 5.12598 16.5625C4.77598 16.375 4.27598 15.9125 5.11348 15.9C5.90098 15.8875 6.46348 16.625 6.65098 16.925C7.55098 18.4375 8.98848 18.0125 9.56348 17.75C9.65098 17.1 9.91348 16.6625 10.201 16.4125C7.97598 16.1625 5.65098 15.3 5.65098 11.475C5.65098 10.3875 6.03848 9.4875 6.67598 8.7875C6.57598 8.5375 6.22598 7.5125 6.77598 6.1375C6.77598 6.1375 7.61348 5.875 9.52598 7.1625C10.326 6.9375 11.176 6.825 12.026 6.825C12.876 6.825 13.726 6.9375 14.526 7.1625C16.4385 5.8625 17.276 6.1375 17.276 6.1375C17.826 7.5125 17.476 8.5375 17.376 8.7875C18.0135 9.4875 18.401 10.375 18.401 11.475C18.401 15.3125 16.0635 16.1625 13.8385 16.4125C14.201 16.725 14.5135 17.325 14.5135 18.2625C14.5135 19.6 14.501 20.675 14.501 21.0125C14.501 21.275 14.6885 21.5875 15.1885 21.4875C19.259 20.1133 21.9999 16.2963 22.001 12C22.001 6.475 17.526 2 12.001 2Z"></path></svg>',
-                label: "GitHub",
-              },
-              {
-                href: "https://www.linkedin.com/in/joscalion/",
-                icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8"><path d="M18.3362 18.339H15.6707V14.1622C15.6707 13.1662 15.6505 11.8845 14.2817 11.8845C12.892 11.8845 12.6797 12.9683 12.6797 14.0887V18.339H10.0142V9.75H12.5747V10.9207H12.6092C12.967 10.2457 13.837 9.53325 15.1367 9.53325C17.8375 9.53325 18.337 11.3108 18.337 13.6245V18.339H18.3362ZM7.00373 8.57475C6.14573 8.57475 5.45648 7.88025 5.45648 7.026C5.45648 6.1725 6.14648 5.47875 7.00373 5.47875C7.85873 5.47875 8.55173 6.1725 8.55173 7.026C8.55173 7.88025 7.85798 8.57475 7.00373 8.57475ZM8.34023 18.339H5.66723V9.75H8.34023V18.339ZM19.6697 3H4.32923C3.59498 3 3.00098 3.5805 3.00098 4.29675V19.7033C3.00098 20.4202 3.59498 21 4.32923 21H19.6675C20.401 21 21.001 20.4202 21.001 19.7033V4.29675C21.001 3.5805 20.401 3 19.6675 3H19.6697Z"></path></svg>',
-                label: "LinkedIn",
-              },
-              {
-                href: "mailto:joscalion04@gmail.com",
-                icon: '<svg xmlns="http://www.w3.org/2000/svg" width="2.1em" height="2.1em" viewBox="0 0 24 24"><path fill="currentColor" d="m18.73 5.41l-1.28 1L12 10.46L6.55 6.37l-1.28-1A2 2 0 0 0 2 7.05v11.59A1.36 1.36 0 0 0 3.36 20h3.19v-7.72L12 16.37l5.45-4.09V20h3.19A1.36 1.36 0 0 0 22 18.64V7.05a2 2 0 0 0-3.27-1.64"/></svg>',
-                label: "Email",
-              },
-            ].map((link) => (
-              <a
-                href={link.href}
-                target="_blank"
-                class="flex flex-col items-center group"
-                aria-label={link.label}
-              >
-                <div class="text-[var(--white-icon)] hover:text-[var(--white)] transition duration-300 ease-in-out">
-                  <div set:html={link.icon} />
-                </div>
-              </a>
-            ))
-          }
+
+    <!-- Contact CTA -->
+    <div class="terminal-window border-l-4 border-l-[var(--sec)] p-6 mb-10">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="section-label">// Contact</span>
+      </div>
+      <h3 class="text-3xl md:text-4xl font-bold mb-2">Let's Connect</h3>
+      <p class="text-[var(--white-icon)] mb-6 max-w-xl">
+        Available for security engagements, consulting, speaking opportunities, and collaboration on cybersecurity initiatives.
+        Based in <strong class="text-[var(--white)]">Costa Rica</strong>, operating <strong class="text-[var(--white)]">remotely</strong>.
+      </p>
+
+      <form
+        id="contact-form"
+        action="https://formspree.io/f/mnnjznkj"
+        method="POST"
+        class="grid grid-cols-1 md:grid-cols-2 gap-4"
+      >
+        <input
+          type="text"
+          name="from_name"
+          placeholder="Name"
+          required
+          class="mono px-4 py-3 bg-[rgba(255,255,255,0.04)] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-xl focus:outline-none focus:border-[var(--sec)] transition-colors placeholder:text-[var(--white-icon)] text-sm"
+        />
+        <input
+          type="email"
+          name="reply_to"
+          placeholder="Email"
+          required
+          class="mono px-4 py-3 bg-[rgba(255,255,255,0.04)] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-xl focus:outline-none focus:border-[var(--sec)] transition-colors placeholder:text-[var(--white-icon)] text-sm"
+        />
+        <textarea
+          name="message"
+          placeholder="Message"
+          rows="4"
+          required
+          class="mono md:col-span-2 px-4 py-3 bg-[rgba(255,255,255,0.04)] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-xl focus:outline-none focus:border-[var(--sec)] transition-colors resize-none placeholder:text-[var(--white-icon)] text-sm"
+        ></textarea>
+        <button
+          type="submit"
+          class="mono md:col-span-2 px-6 py-3 bg-[rgba(164,118,255,0.12)] text-[var(--sec)] border border-[rgba(164,118,255,0.3)] rounded-xl hover:bg-[rgba(164,118,255,0.2)] hover:border-[var(--sec)] transition-all duration-200 font-semibold tracking-widest uppercase text-sm"
+        >
+          Send Message
+        </button>
+      </form>
+      <div id="form-message" class="hidden justify-center items-center mt-4 text-[var(--green)] text-sm mono">
+        ✓ Message sent — I'll get back to you shortly.
+      </div>
+    </div>
+
+    <!-- Bottom row -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+
+      <!-- Social links -->
+      <div class="space-y-4">
+        <span class="section-label">// Connect</span>
+        <div class="flex gap-3 mt-3">
+          {[
+            { href: "//github.com/Joscalion04", label: "GitHub", icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5"><path d="M12.001 2C6.47598 2 2.00098 6.475 2.00098 12C2.00098 16.425 4.86348 20.1625 8.83848 21.4875C9.33848 21.575 9.52598 21.275 9.52598 21.0125C9.52598 20.775 9.51348 19.9875 9.51348 19.15C7.00098 19.6125 6.35098 18.5375 6.15098 17.975C6.03848 17.6875 5.55098 16.8 5.12598 16.5625C4.77598 16.375 4.27598 15.9125 5.11348 15.9C5.90098 15.8875 6.46348 16.625 6.65098 16.925C7.55098 18.4375 8.98848 18.0125 9.56348 17.75C9.65098 17.1 9.91348 16.6625 10.201 16.4125C7.97598 16.1625 5.65098 15.3 5.65098 11.475C5.65098 10.3875 6.03848 9.4875 6.67598 8.7875C6.57598 8.5375 6.22598 7.5125 6.77598 6.1375C6.77598 6.1375 7.61348 5.875 9.52598 7.1625C10.326 6.9375 11.176 6.825 12.026 6.825C12.876 6.825 13.726 6.9375 14.526 7.1625C16.4385 5.8625 17.276 6.1375 17.276 6.1375C17.826 7.5125 17.476 8.5375 17.376 8.7875C18.0135 9.4875 18.401 10.375 18.401 11.475C18.401 15.3125 16.0635 16.1625 13.8385 16.4125C14.201 16.725 14.5135 17.325 14.5135 18.2625C14.5135 19.6 14.501 20.675 14.501 21.0125C14.501 21.275 14.6885 21.5875 15.1885 21.4875C19.259 20.1133 21.9999 16.2963 22.001 12C22.001 6.475 17.526 2 12.001 2Z"/></svg>` },
+            { href: "https://www.linkedin.com/in/joscalion/", label: "LinkedIn", icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5"><path d="M18.3362 18.339H15.6707V14.1622C15.6707 13.1662 15.6505 11.8845 14.2817 11.8845C12.892 11.8845 12.6797 12.9683 12.6797 14.0887V18.339H10.0142V9.75H12.5747V10.9207H12.6092C12.967 10.2457 13.837 9.53325 15.1367 9.53325C17.8375 9.53325 18.337 11.3108 18.337 13.6245V18.339H18.3362ZM7.00373 8.57475C6.14573 8.57475 5.45648 7.88025 5.45648 7.026C5.45648 6.1725 6.14648 5.47875 7.00373 5.47875C7.85873 5.47875 8.55173 6.1725 8.55173 7.026C8.55173 7.88025 7.85798 8.57475 7.00373 8.57475ZM8.34023 18.339H5.66723V9.75H8.34023V18.339ZM19.6697 3H4.32923C3.59498 3 3.00098 3.5805 3.00098 4.29675V19.7033C3.00098 20.4202 3.59498 21 4.32923 21H19.6675C20.401 21 21.001 20.4202 21.001 19.7033V4.29675C21.001 3.5805 20.401 3 19.6675 3H19.6697Z"/></svg>` },
+            { href: "mailto:joscalion04@gmail.com", label: "Email", icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5"><path d="m18.73 5.41l-1.28 1L12 10.46L6.55 6.37l-1.28-1A2 2 0 0 0 2 7.05v11.59A1.36 1.36 0 0 0 3.36 20h3.19v-7.72L12 16.37l5.45-4.09V20h3.19A1.36 1.36 0 0 0 22 18.64V7.05a2 2 0 0 0-3.27-1.64"/></svg>` },
+          ].map(link => (
+            <a href={link.href} target="_blank" aria-label={link.label}
+              class="text-[var(--white-icon)] hover:text-[var(--sec)] transition-all duration-200 border border-[var(--white-icon-tr)] p-2.5 rounded-xl bg-[rgba(255,255,255,0.03)] hover:border-[var(--sec)]">
+              <div set:html={link.icon} />
+            </a>
+          ))}
         </div>
         <LikeButton client:load />
       </div>
 
-      <div class="flex flex-col items-center md:items-start space-y-6">
-        <div class="grid grid-cols-1 gap-3 w-full max-w-xs">
-          {
-            [
-              {
-                desc: "Built with",
-                name: "Astro",
-                icon: "/svg/astro.svg",
-                alt: "Astro Logo",
-              },
-              {
-                desc: "Styled with",
-                name: "TailwindCSS",
-                icon: "/svg/tailwindcss.svg",
-                alt: "TailwindCSS Logo",
-              },
-              {
-                desc: "Deployed on",
-                name: "Vercel",
-                icon: "/svg/vercel.svg",
-                alt: "Vercel Logo",
-              },
-            ].map((tech) => (
-              <div class="flex items-center space-x-3">
-                <span class="text-[var(--white-icon)] text-sm">{tech.desc}</span>
-                <img
-                  src={tech.icon}
-                  alt={tech.alt}
-                  class="h-5 w-5 object-contain filter brightness-0 invert opacity-50"
-                  loading="lazy"
-                />
-                <span class="text-[var(--white-icon)] text-sm">{tech.name}</span>
-              </div>
-            ))
-          }
+      <!-- Built with -->
+      <div class="space-y-3">
+        <span class="section-label">// Built with</span>
+        <div class="mt-3 space-y-2">
+          {[
+            { desc: "Built with", name: "Astro", icon: "/svg/astro.svg" },
+            { desc: "Styled with", name: "TailwindCSS", icon: "/svg/tailwindcss.svg" },
+            { desc: "Deployed on", name: "Vercel", icon: "/svg/vercel.svg" },
+          ].map(tech => (
+            <div class="flex items-center gap-2">
+              <span class="mono text-xs text-[var(--white-icon)]">{tech.desc}</span>
+              <img src={tech.icon} alt={tech.name} class="h-4 w-4 object-contain opacity-50 invert" loading="lazy" />
+              <span class="mono text-xs text-[var(--white)]">{tech.name}</span>
+            </div>
+          ))}
         </div>
       </div>
 
-      <div class="flex flex-col items-center md:items-start space-y-6">
-        <h4 class="text-lg font-semibold text-[var(--white)]">Development Areas</h4>
-        <div class="flex flex-wrap gap-2 justify-center md:justify-start">
-          <span class="px-3 py-1 text-sm rounded-full bg-purple-500 bg-opacity-20 text-purple-300">Cybersecurity</span>
-          <span class="px-3 py-1 text-sm rounded-full bg-green-500 bg-opacity-20 text-green-300">DevOps</span>
-          <span class="px-3 py-1 text-sm rounded-full bg-blue-500 bg-opacity-20 text-blue-300">Development</span>
+      <!-- Specializations -->
+      <div class="space-y-3">
+        <span class="section-label">// Focus Areas</span>
+        <div class="mt-3 flex flex-wrap gap-1.5">
+          <span class="tag-red mono text-xs px-2 py-0.5 rounded">Pentesting</span>
+          <span class="tag-purple mono text-xs px-2 py-0.5 rounded">SecOps</span>
+          <span class="tag-purple mono text-xs px-2 py-0.5 rounded">SIEM/SOAR</span>
+          <span class="tag-red mono text-xs px-2 py-0.5 rounded">OSINT</span>
+          <span class="tag-red mono text-xs px-2 py-0.5 rounded">DarkINT</span>
+          <span class="tag-green mono text-xs px-2 py-0.5 rounded">DevSecOps</span>
+          <span class="tag-gray mono text-xs px-2 py-0.5 rounded">ISO 27001</span>
+          <span class="tag-gray mono text-xs px-2 py-0.5 rounded">PCI DSS</span>
         </div>
       </div>
     </div>
 
-    <div class="mt-12 pt-8 border-t border-[#ffffff10]">
-      <p class="text-center text-sm text-[var(--white-icon)] space-y-2">
-        <span class="block sm:inline">
-          Copyright © 2025 <a href="//github.com/Joscalion04">Joscalion04</a>. All rights reserved.
-        </span>
+    <div class="pt-6 border-t border-[#ffffff08] flex flex-col md:flex-row items-center justify-between gap-2">
+      <p class="mono text-xs text-[var(--white-icon)] opacity-40">
+        © 2026 Joseph Leon Cabezas · SecOps Engineer · Costa Rica
+      </p>
+      <p class="mono text-xs text-[var(--white-icon)] opacity-30">
+        joscalion04@gmail.com
       </p>
     </div>
   </div>
 </footer>
+
+<script type="module" is:inline>
+  const form = document.getElementById("contact-form");
+  const formMessage = document.getElementById("form-message");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    try {
+      const response = await fetch(form.action, { method: "POST", body: formData, headers: { Accept: "application/json" } });
+      if (response.ok) {
+        form.reset();
+        form.style.display = "none";
+        formMessage.classList.remove("hidden");
+        formMessage.classList.add("flex");
+      } else {
+        alert("There was a problem sending your message.");
+      }
+    } catch (error) {
+      alert("There was a problem sending your message.");
+    }
+  });
+</script>

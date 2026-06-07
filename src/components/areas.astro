@@ -1,173 +1,150 @@
 ---
-import { Image } from "astro:assets";
-import socImg from "../../public/soc-example.png";
-import pcapImg from "../../public/snypshark-example.png";
-import cd_cd from "../../public/ci_cd-example.png";
-import lamp from "../../public/lamp-example.png";
-import ldap from "../../public/OpenLDAP-example.png";
-
-interface Project {
-  title: string;
-  image: any;
-  link: string;
-  preview: string;
-  status: string;
-  area: string;
-  description: string;
-}
-
-const projects: Project[] = [
-  {
-    title: "SNYPSHARK – PCAP Network Analyzer",
-    image: pcapImg,
-    link: "https://github.com/Joscalion04/Snypshark",
-    preview: "https://github.com/Joscalion04/Snypshark",
-    status: "Completed",
-    area: "SecOps & Pentesting",
-    description: "Python CLI tool for analyzing network captures (.pcap/.pcapng) with full OSI layer breakdown, anomaly detection, and protocol statistics."
-  },
-  {
-    title: "Secure LAMP Server + Nextcloud & Traffic Analysis",
-    image: lamp,
-    link: "https://www.linkedin.com/in/joscalion/details/projects/1743371783472/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
-    preview: "https://www.linkedin.com/in/joscalion/details/projects/1743371783472/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
-    status: "Completed",
-    area: "SecOps & Pentesting",
-    description: "Configured a hardened LAMP stack with Nextcloud on VirtualBox. Implemented Apache firewall rules, SSL, and conducted network traffic analysis using Wireshark."
-  },
-  {
-    title: "Virtualized Network — LDAP, iptables & LAMP",
-    image: ldap,
-    link: "https://www.linkedin.com/in/joscalion/details/projects/1756176969204/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
-    preview: "https://www.linkedin.com/in/joscalion/details/projects/1756176969204/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
-    status: "Completed",
-    area: "SecOps & Pentesting",
-    description: "Built a virtualized environment with 4 VMs: iptables firewall, OpenLDAP IAM, client, and LAMP server. Configured role-based access and monitored traffic for security enforcement."
-  },
-  {
-    title: "Hardened CI/CD Pipeline with Jenkins, Docker & Kubernetes",
-    image: cd_cd,
-    link: "",
-    preview: "",
-    status: "Completed",
-    area: "DevSecOps",
-    description: "Local CI/CD pipeline with Jenkins, Docker, and Kubernetes. Integrated security gates, automated scans, and hardened deployment workflows triggered on git push."
-  },
-  {
-    title: "Remote CI/CD with Flask, Docker & Azure",
-    image: cd_cd,
-    link: "https://github.com/Joscalion04/CI-CD_Proyecto",
-    preview: "https://github.com/Joscalion04/CI-CD_Proyecto",
-    status: "Completed",
-    area: "DevSecOps",
-    description: "Remote CI/CD pipeline using GitHub hooks → Jenkins → Azure. Deployed a Dockerized Python Flask app with security controls and automated compliance checks."
-  },
-  {
-    title: "SOC Platform — Billing & Accounting System",
-    image: socImg,
-    link: "",
-    preview: "https://drive.google.com/file/d/1UmnxfwXnA_mU_yGjjtnvXGayFwNbqYqH/view?usp=drive_link",
-    status: "Confidential (Deployed)",
-    area: "DevSecOps",
-    description: "Secure billing and accounting platform deployed in production. Applied WAF rules, RBAC, secure CI/CD validation, and Wazuh-based monitoring for ongoing security visibility."
-  }
-];
-
 const areas = [
   {
-    id: "secops-pentesting",
-    title: "SecOps & Pentesting",
-    description: "Security operations, threat hunting, incident response, and offensive security — translating attack paths into risk-driven remediation.",
-    skills: ["CrowdStrike Falcon", "Wazuh", "Splunk", "Threat Hunting", "Incident Response", "Burp Suite", "Metasploit", "Nmap", "Wireshark", "OWASP Top 10", "MITRE ATT&CK"],
-    color: "from-red-700 to-orange-600",
-    projects: projects.filter(p => p.area === "SecOps & Pentesting")
+    id: "secops",
+    label: "01",
+    title: "SecOps & Incident Response",
+    shortDesc: "Security operations, threat hunting, and real-time incident management.",
+    description: "Design and operation of security programs using Next-Gen SIEM platforms, playbook automation, and threat intelligence integration. Deep focus on reducing MTTR and enabling scalable SOC operations aligned with business risk.",
+    color: "border-[var(--sec)]",
+    gradientDot: "bg-purple-500",
+    skills: [
+      "CrowdStrike Falcon SIEM", "Splunk & Splunk SOAR", "Wazuh", "Elastic SIEM",
+      "Microsoft Sentinel", "FortiSIEM", "Threat Hunting", "Incident Response",
+      "Digital Forensics", "SIEM Use Case Development", "Playbook Automation", "SOAR Orchestration"
+    ],
+    tools: ["crowdstrike", "splunk", "wazuh", "elastic"],
   },
   {
-    id: "vuln-management",
-    title: "Vulnerability Management",
-    description: "End-to-end vulnerability and patch lifecycle: risk-based prioritization, remediation planning, compliance governance, and post-patch validation.",
-    skills: ["Nessus", "OpenVAS", "CrowdStrike Exposure Mgmt", "CVSS Scoring", "ISO 27001", "NIST SP 800", "PCI DSS", "Windows Hardening", "Linux Hardening"],
-    color: "from-purple-700 to-indigo-600",
-    projects: []
+    id: "vuln-mgmt",
+    label: "02",
+    title: "Vulnerability & Patch Management",
+    shortDesc: "Risk-based prioritization, patch cycles, and compliance governance.",
+    description: "End-to-end VPM lifecycle across Windows and Linux environments. Combines CVSS scoring with exploitability context, asset criticality, and business impact. Strong emphasis on post-patch validation, service continuity, and auditability under ISO 27001 and PCI DSS.",
+    color: "border-[#6366f1]",
+    gradientDot: "bg-indigo-500",
+    skills: [
+      "CrowdStrike Exposure Management", "Nessus", "OpenVAS / Greenbone",
+      "CVSS v3/v4 Scoring", "Risk-Based Prioritization", "Windows Server Hardening",
+      "Linux Hardening (Ubuntu, Debian, SUSE, Arch)", "ISO/IEC 27001", "NIST SP 800", "PCI DSS",
+      "Patch Cycle Automation", "Post-Remediation Validation"
+    ],
+    tools: ["crowdstrike", "linux", "ubuntuServer", "nmap"],
+  },
+  {
+    id: "osint",
+    label: "03",
+    title: "OSINT & DarkINT Intelligence",
+    shortDesc: "Open source intelligence, dark web monitoring, and Tor-based threat investigations.",
+    description: "Advanced OSINT and DarkINT operations — digital footprint mapping, adversary profiling, and threat intelligence gathering via open web, dark web, and Tor network. Translates raw intelligence into actionable threat models and risk reports.",
+    color: "border-[var(--red)]",
+    gradientDot: "bg-red-500",
+    skills: [
+      "Open Source Intelligence (OSINT)", "DarkINT / Dark Web Monitoring",
+      "Tor Network — Threat Investigation", "Digital Footprint Analysis",
+      "Adversary Profiling", "Maltego", "Recon-ng", "theHarvester",
+      "Shodan", "Fierce", "SpiderFoot", "Social Media OSINT", "HUMINT Correlation"
+    ],
+    tools: ["python", "bash", "wireshark", "nmap"],
+  },
+  {
+    id: "pentesting",
+    label: "04",
+    title: "Penetration Testing & Red Team",
+    shortDesc: "Authorized offensive assessments, bug bounty, and attack surface validation.",
+    description: "Hands-on offensive security across web applications, APIs, networks, and Active Directory environments. Active bug bounty researcher on HackerOne applying OWASP Top 10 and MITRE ATT&CK. Converts attack path findings into executive-level risk-driven remediation.",
+    color: "border-orange-500",
+    gradientDot: "bg-orange-500",
+    skills: [
+      "Web App Pentesting (OWASP Top 10)", "API Security Testing", "Network Pentesting",
+      "Active Directory Attacks", "Burp Suite", "Metasploit", "Nmap", "SQLmap",
+      "BloodHound", "CrackMapExec", "Responder", "Impacket", "Gobuster", "Nikto",
+      "Hydra", "Hashcat", "MITRE ATT&CK", "CVE Research", "PoC Development"
+    ],
+    tools: ["kalilinux", "metasploit", "burpSuite", "nmap"],
   },
   {
     id: "devsecops",
-    title: "DevSecOps",
-    description: "Secure pipeline design, container hardening, Infrastructure as Code, and shifting security left throughout the SDLC.",
-    skills: ["Docker", "Kubernetes", "Jenkins", "GitHub Actions", "Terraform", "Ansible", "Container Scanning", "Secrets Management", "AWS", "Azure"],
-    color: "from-green-700 to-teal-600",
-    projects: projects.filter(p => p.area === "DevSecOps")
-  }
+    label: "05",
+    title: "DevSecOps & Cloud Security",
+    shortDesc: "Secure pipelines, container hardening, IaC, and cloud security posture.",
+    description: "Integrating security throughout the SDLC — from secure design patterns and code review to hardened CI/CD pipelines, container scanning, secrets management, and cloud security posture management on AWS and Azure.",
+    color: "border-green-500",
+    gradientDot: "bg-green-500",
+    skills: [
+      "AWS Security", "Azure Security", "CI/CD Security (GitHub Actions, Jenkins, GitLab)",
+      "Container Image Scanning", "Kubernetes Security Policies", "Secrets Management",
+      "Terraform", "Ansible", "SAST/DAST Integration", "Dependency Scanning",
+      "Docker Hardening", "Secure SDLC", "IaC Security"
+    ],
+    tools: ["docker", "kubernetes", "aws", "git"],
+  },
+  {
+    id: "secarch",
+    label: "06",
+    title: "Security Architecture & Defense",
+    shortDesc: "Enterprise defense frameworks, ZTA, network segmentation, and hardening.",
+    description: "Design and implementation of enterprise-grade defensive security architectures: Zero Trust, network segmentation, NAC, Defense-in-Depth. Administration of Fortinet Security Fabric, Sophos Central, and AD identity governance.",
+    color: "border-blue-500",
+    gradientDot: "bg-blue-500",
+    skills: [
+      "Fortinet Security Fabric", "FortiGate / FortiOS", "Sophos Central",
+      "Zero Trust Architecture (ZTA)", "Network Segmentation", "IDS/IPS",
+      "Active Directory Security", "Privilege Management", "IAM Governance",
+      "VPN Infrastructure", "Defense-in-Depth", "Lumu Defender"
+    ],
+    tools: ["fortinet", "linux", "docker", "proxmox"],
+  },
 ];
 ---
 
 <section id="areas" class="py-20 border-t border-[#ffffff10] text-[var(--white)]">
   <div class="max-w-5xl mx-auto">
-    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">My Expertise</h2>
-    <h3 class="text-4xl md:text-5xl font-medium mb-12">Areas & Projects</h3>
 
-    {areas.map((area) => (
-      <details class="mb-8 group bg-[#1414149c] rounded-2xl border border-[var(--white-icon-tr)] hover:border-[var(--sec)] transition-all">
-        <summary class="cursor-pointer p-6 flex justify-between items-center">
-          <div class="flex items-center">
-            <div class={`p-3 rounded-xl bg-gradient-to-r ${area.color} mr-4`}></div>
-            <h4 class="text-2xl font-semibold">{area.title}</h4>
-          </div>
-          <span class="text-[var(--sec)] text-sm">{area.projects.length > 0 ? `${area.projects.length} projects` : "Operations"}</span>
-        </summary>
+    <div class="flex items-center gap-3 mb-2">
+      <span class="section-label">// Competency Map</span>
+      <div class="flex-1 h-px bg-[var(--white-icon-tr)]"></div>
+    </div>
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">Specializations</h2>
+    <h3 class="text-4xl md:text-5xl font-bold mb-12">Areas of Expertise</h3>
 
-        <div class="px-6 pb-6">
-          <p class="text-[var(--white-icon)] mb-4">{area.description}</p>
-          <div class="flex flex-wrap gap-2 mb-6">
-            {area.skills.map((skill) => (
-              <span class="px-3 py-1 text-sm rounded-full bg-[#ffffff10] text-[var(--white-icon)]">{skill}</span>
-            ))}
-          </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {areas.map((area) => (
+        <details class={`group terminal-window border-t-2 ${area.color} hover:shadow-[0_0_20px_rgba(164,118,255,0.06)] transition-all duration-300`}>
+          <summary class="cursor-pointer p-5 flex items-start justify-between gap-3 select-none">
+            <div class="flex items-start gap-4">
+              <span class="mono text-xs text-[var(--white-icon)] opacity-40 mt-1 shrink-0">{area.label}</span>
+              <div>
+                <h4 class="text-lg font-bold leading-tight">{area.title}</h4>
+                <p class="text-sm text-[var(--white-icon)] mt-1">{area.shortDesc}</p>
+              </div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+              class="w-4 h-4 text-[var(--white-icon)] shrink-0 mt-1 transform transition-transform duration-300 group-open:rotate-180">
+              <path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"/>
+            </svg>
+          </summary>
 
-          {area.projects.length > 0 && (
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {area.projects.map((project) => (
-                <div class="group">
-                  <a href={project.preview || project.link} target="_blank" rel="noopener noreferrer" class="block">
-                    <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-3">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        class="w-full h-48 md:h-60 object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <h5 class="text-xl font-semibold">{project.title}</h5>
-                    <p class="text-sm text-[var(--white-icon)] py-1">{project.description}</p>
-                    <span class="text-sm text-[var(--white-icon)]">{project.status}</span>
-                  </a>
-                </div>
+          <div class="px-5 pb-5 border-t border-[rgba(255,255,255,0.05)] pt-4 space-y-4">
+            <p class="text-sm text-[var(--white-icon)] leading-relaxed">{area.description}</p>
+
+            <div>
+              <span class="mono text-xs text-[var(--sec)] opacity-60 tracking-widest uppercase block mb-2">// Skills & Tools</span>
+              <div class="flex flex-wrap gap-1.5">
+                {area.skills.map(skill => (
+                  <span class="mono text-xs px-2 py-0.5 rounded tag-gray">{skill}</span>
+                ))}
+              </div>
+            </div>
+
+            <div class="flex gap-2 pt-1">
+              {area.tools.map(tool => (
+                <img src={`/svg/${tool}.svg`} alt={tool} class="h-5 w-auto opacity-40 hover:opacity-80 transition-opacity" loading="lazy" />
               ))}
             </div>
-          )}
-
-          {area.id === "vuln-management" && (
-            <div class="rounded-2xl bg-[#0d0d0d60] border border-[var(--white-icon-tr)] p-5 text-[var(--white-icon)] text-sm leading-relaxed">
-              <p class="mb-2 text-[var(--white)] font-medium">Operational work — not open-source</p>
-              <p>Day-to-day VPM operations are performed in enterprise environments under confidentiality agreements. This includes risk-based patch cycles, exploitability triage, asset criticality mapping, and compliance reporting under ISO 27001 and PCI DSS frameworks at SWAT Consulting Services.</p>
-            </div>
-          )}
-        </div>
-      </details>
-    ))}
+          </div>
+        </details>
+      ))}
+    </div>
   </div>
 </section>
-
-<style is:global>
-  .shiny-sec {
-    background: linear-gradient(135deg, #a476ff 25%, #eee5ff 50%, #a476ff 75%);
-    background-size: 400% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: shine 3s linear infinite;
-  }
-  @keyframes shine {
-    0% { background-position: 100% 50%; }
-    30%, 70% { background-position: 0% 50%; }
-  }
-</style>
