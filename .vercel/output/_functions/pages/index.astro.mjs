@@ -3,7 +3,7 @@ import { c as createComponent, m as maybeRenderHead, r as renderHead, a as rende
 import 'piccolore';
 import 'clsx';
 import { jsxs, jsx } from 'react/jsx-runtime';
-import { useRef, useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { $ as $$Image } from '../chunks/_astro_assets_Ck_ADo2u.mjs';
 import { getFirestore, doc, onSnapshot, updateDoc, increment } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
@@ -53,233 +53,6 @@ const $$Nav = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<div class="flex justify-center w-full" data-astro-cid-d6vcou2g> <nav id="main-nav" class="fixed left-1/2 -translate-x-1/2 z-[100] bg-[var(--background)] border border-transparent backdrop-blur-xl transition-all duration-500 ease-in-out md:top-6 md:bottom-auto bottom-0 w-[90%] md:w-[80%]" data-astro-cid-d6vcou2g> <div class="container mx-auto flex justify-center items-center p-3" data-astro-cid-d6vcou2g> <ul class="flex w-full justify-between md:space-x-4 md:justify-center md:gap-8 gap-3" data-astro-cid-d6vcou2g> ${navItems.map((item) => renderTemplate`<li class="flex-1 md:flex-none" data-astro-cid-d6vcou2g> <a${addAttribute(item.href, "href")} class="flex flex-col items-center gap-1 text-[var(--white-icon)] transition-colors text-xs md:text-sm relative group" data-astro-cid-d6vcou2g> <div class="absolute -left-5 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full transition-all duration-300 scale-0 opacity-0 bg-[var(--sec)] nav-indicator hidden md:block" style="box-shadow: 0 0 6px var(--sec);" data-astro-cid-d6vcou2g></div> <span class="md:hidden flex items-center justify-center w-5 h-5" data-astro-cid-d6vcou2g> <fragment data-astro-cid-d6vcou2g>${unescapeHTML(item.icon)}</fragment> </span> <span class="hidden md:inline-block font-mono text-xs tracking-widest uppercase" data-astro-cid-d6vcou2g>${item.label}</span> <span class="md:hidden text-[10px] tracking-wide" data-astro-cid-d6vcou2g>${item.label}</span> </a> </li>`)} </ul> </div> </nav> </div>  ${renderScript($$result, "/home/joseph/Documents/Projects/Portfolio/src/components/nav.astro?astro&type=script&index=0&lang.ts")}`;
 }, "/home/joseph/Documents/Projects/Portfolio/src/components/nav.astro", void 0);
 
-const LetterGlitch = ({
-  glitchColors = ["#5e4491", "#A476FF", "#241a38"],
-  glitchSpeed = 33,
-  centerVignette = false,
-  outerVignette = false,
-  smooth = true
-}) => {
-  const canvasRef = useRef(null);
-  const animationRef = useRef(null);
-  const letters = useRef([]);
-  const grid = useRef({ columns: 0, rows: 0 });
-  const context = useRef(null);
-  const lastGlitchTime = useRef(Date.now());
-  const fontSize = 16;
-  const charWidth = 10;
-  const charHeight = 20;
-  const lettersAndSymbols = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-    "!",
-    "@",
-    "#",
-    "$",
-    "&",
-    "*",
-    "(",
-    ")",
-    "-",
-    "_",
-    "+",
-    "=",
-    "/",
-    "[",
-    "]",
-    "{",
-    "}",
-    ";",
-    ":",
-    "<",
-    ">",
-    ",",
-    "0",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9"
-  ];
-  const getRandomChar = () => {
-    return lettersAndSymbols[Math.floor(Math.random() * lettersAndSymbols.length)];
-  };
-  const getRandomColor = () => {
-    return glitchColors[Math.floor(Math.random() * glitchColors.length)];
-  };
-  const hexToRgb = (hex) => {
-    const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-    hex = hex.replace(shorthandRegex, (m, r, g, b) => {
-      return r + r + g + g + b + b;
-    });
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
-    } : null;
-  };
-  const interpolateColor = (start, end, factor) => {
-    const result = {
-      r: Math.round(start.r + (end.r - start.r) * factor),
-      g: Math.round(start.g + (end.g - start.g) * factor),
-      b: Math.round(start.b + (end.b - start.b) * factor)
-    };
-    return `rgb(${result.r}, ${result.g}, ${result.b})`;
-  };
-  const calculateGrid = (width, height) => {
-    const columns = Math.ceil(width / charWidth);
-    const rows = Math.ceil(height / charHeight);
-    return { columns, rows };
-  };
-  const initializeLetters = (columns, rows) => {
-    grid.current = { columns, rows };
-    const totalLetters = columns * rows;
-    letters.current = Array.from({ length: totalLetters }, () => ({
-      char: getRandomChar(),
-      color: getRandomColor(),
-      targetColor: getRandomColor(),
-      colorProgress: 1
-    }));
-  };
-  const resizeCanvas = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const parent = canvas.parentElement;
-    if (!parent) return;
-    const dpr = window.devicePixelRatio || 1;
-    const rect = parent.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    canvas.style.width = `${rect.width}px`;
-    canvas.style.height = `${rect.height}px`;
-    if (context.current) {
-      context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-    const { columns, rows } = calculateGrid(rect.width, rect.height);
-    initializeLetters(columns, rows);
-    drawLetters();
-  };
-  const drawLetters = () => {
-    if (!context.current || letters.current.length === 0) return;
-    const ctx = context.current;
-    const { width, height } = canvasRef.current.getBoundingClientRect();
-    ctx.clearRect(0, 0, width, height);
-    ctx.font = `${fontSize}px monospace`;
-    ctx.textBaseline = "top";
-    letters.current.forEach((letter, index) => {
-      const x = index % grid.current.columns * charWidth;
-      const y = Math.floor(index / grid.current.columns) * charHeight;
-      ctx.fillStyle = letter.color;
-      ctx.fillText(letter.char, x, y);
-    });
-  };
-  const updateLetters = () => {
-    if (!letters.current || letters.current.length === 0) return;
-    const updateCount = Math.max(1, Math.floor(letters.current.length * 0.05));
-    for (let i = 0; i < updateCount; i++) {
-      const index = Math.floor(Math.random() * letters.current.length);
-      if (!letters.current[index]) continue;
-      letters.current[index].char = getRandomChar();
-      letters.current[index].targetColor = getRandomColor();
-      if (!smooth) {
-        letters.current[index].color = letters.current[index].targetColor;
-        letters.current[index].colorProgress = 1;
-      } else {
-        letters.current[index].colorProgress = 0;
-      }
-    }
-  };
-  const handleSmoothTransitions = () => {
-    let needsRedraw = false;
-    letters.current.forEach((letter) => {
-      if (letter.colorProgress < 1) {
-        letter.colorProgress += 0.05;
-        if (letter.colorProgress > 1) letter.colorProgress = 1;
-        const startRgb = hexToRgb(letter.color);
-        const endRgb = hexToRgb(letter.targetColor);
-        if (startRgb && endRgb) {
-          letter.color = interpolateColor(
-            startRgb,
-            endRgb,
-            letter.colorProgress
-          );
-          needsRedraw = true;
-        }
-      }
-    });
-    if (needsRedraw) {
-      drawLetters();
-    }
-  };
-  const animate = () => {
-    const now = Date.now();
-    if (now - lastGlitchTime.current >= glitchSpeed) {
-      updateLetters();
-      drawLetters();
-      lastGlitchTime.current = now;
-    }
-    if (smooth) {
-      handleSmoothTransitions();
-    }
-    animationRef.current = requestAnimationFrame(animate);
-  };
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    context.current = canvas.getContext("2d");
-    resizeCanvas();
-    animate();
-    let resizeTimeout;
-    const handleResize = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        cancelAnimationFrame(animationRef.current);
-        resizeCanvas();
-        animate();
-      }, 100);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      cancelAnimationFrame(animationRef.current);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [glitchSpeed, smooth]);
-  return /* @__PURE__ */ jsxs("div", { className: "relative w-full h-full bg-[#101010] overflow-hidden", children: [
-    /* @__PURE__ */ jsx("canvas", { ref: canvasRef, className: "block w-full h-full" }),
-    outerVignette && /* @__PURE__ */ jsx("div", { className: "absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,_rgba(16,16,16,0)_60%,_rgba(16,16,16,1)_100%)]" }),
-    centerVignette && /* @__PURE__ */ jsx("div", { className: "absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,_rgba(0,0,0,0.8)_0%,_rgba(0,0,0,0)_60%)]" })
-  ] });
-};
-
 const $$LogoWall = createComponent(($$result, $$props, $$slots) => {
   const technologies = [
     "crowdstrike",
@@ -310,100 +83,233 @@ const $$LogoWall = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<div class="relative overflow-x-hidden py-8"> <div class="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[var(--background)] to-transparent z-20"></div> <div class="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[var(--background)] to-transparent z-20"></div> <div class="flex animate-scroll hover:animate-paused gap-12 md:gap-20 w-max"> ${[...technologies, ...technologies, ...technologies].map((tech) => renderTemplate`<div class="flex items-center gap-2 group transition-all duration-300"> <img${addAttribute(`/svg/${tech}.svg`, "src")}${addAttribute(tech, "alt")} class="h-7 w-auto object-contain transition-transform group-hover:scale-110 opacity-60" width="30" height="30" loading="lazy"> <span class="text-lg font-medium text-[var(--white-icon)]"> ${tech.charAt(0).toUpperCase() + tech.slice(1)} </span> </div>`)} </div> </div> `;
 }, "/home/joseph/Documents/Projects/Portfolio/src/components/logoWall.astro", void 0);
 
-const CategoryIcons = {
-  "Security Operations (SecOps)": /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-6 h-6 text-[var(--sec)] opacity-70", children: /* @__PURE__ */ jsx("path", { d: "M12 1L3 5v6c0 5.55 4.24 10.74 9 12 4.76-1.26 9-6.45 9-12V5L12 1zm0 2.18l7 3.12V11c0 4.52-2.98 8.69-7 9.93-4.02-1.24-7-5.41-7-9.93V6.3l7-3.12zM11 7v6h2V7h-2zm0 8v2h2v-2h-2z" }) }),
-  "Vulnerability & Patch Management": /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-6 h-6 text-[var(--sec)] opacity-70", children: /* @__PURE__ */ jsx("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z" }) }),
-  "Penetration Testing & Red Team": /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-6 h-6 text-[var(--sec)] opacity-70", children: /* @__PURE__ */ jsx("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z" }) }),
-  "Security Architecture & Defense": /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-6 h-6 text-[var(--sec)] opacity-70", children: /* @__PURE__ */ jsx("path", { d: "M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" }) }),
-  "Cloud & DevSecOps": /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-6 h-6 text-[var(--sec)] opacity-70", children: /* @__PURE__ */ jsx("path", { d: "M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" }) }),
-  "Programming & Automation": /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-6 h-6 text-[var(--sec)] opacity-70", children: /* @__PURE__ */ jsx("path", { d: "M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" }) })
+const categories = [
+  {
+    id: "secops",
+    label: "SecOps",
+    color: "purple",
+    icon: /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-4 h-4", children: /* @__PURE__ */ jsx("path", { d: "M12 1L3 5v6c0 5.55 4.24 10.74 9 12 4.76-1.26 9-6.45 9-12V5L12 1zm0 2.18l7 3.12V11c0 4.52-2.98 8.69-7 9.93-4.02-1.24-7-5.41-7-9.93V6.3l7-3.12z" }) }),
+    desc: "Design and operation of security programs — real-time monitoring, threat hunting, and incident response at scale.",
+    skills: [
+      "CrowdStrike Falcon SIEM",
+      "Splunk & Splunk SOAR",
+      "Wazuh",
+      "Elastic SIEM",
+      "Microsoft Sentinel",
+      "FortiSIEM",
+      "Threat Hunting",
+      "Incident Response",
+      "Digital Forensics",
+      "SIEM Use Case Dev",
+      "Playbook Automation",
+      "SOC Operations",
+      "Threat Intelligence",
+      "Security Event Correlation",
+      "MTTR Reduction"
+    ]
+  },
+  {
+    id: "vpm",
+    label: "VPM",
+    color: "purple",
+    icon: /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-4 h-4", children: /* @__PURE__ */ jsx("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z" }) }),
+    desc: "End-to-end vulnerability lifecycle — risk-based prioritization, patch cycles, and compliance governance across heterogeneous environments.",
+    skills: [
+      "CrowdStrike Exposure Mgmt",
+      "Nessus",
+      "OpenVAS / Greenbone",
+      "CVSS v3/v4",
+      "Risk-Based Prioritization",
+      "Windows Hardening",
+      "Linux Hardening",
+      "Ubuntu / Debian / SUSE",
+      "ISO/IEC 27001",
+      "NIST SP 800",
+      "PCI DSS",
+      "Patch Cycle Automation",
+      "Post-Remediation Validation",
+      "Asset Criticality Mapping",
+      "Impact Analysis"
+    ]
+  },
+  {
+    id: "pentest",
+    label: "Pentesting",
+    color: "red",
+    icon: /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-4 h-4", children: /* @__PURE__ */ jsx("path", { d: "M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" }) }),
+    desc: "Authorized offensive assessments — web, API, network, and AD. Active bug bounty researcher on HackerOne.",
+    skills: [
+      "Web App Pentesting",
+      "API Security Testing",
+      "Network Pentesting",
+      "Active Directory Attacks",
+      "Burp Suite",
+      "Metasploit",
+      "Nmap",
+      "SQLmap",
+      "BloodHound",
+      "CrackMapExec",
+      "Responder",
+      "Impacket",
+      "Gobuster",
+      "Nikto",
+      "Hydra",
+      "Hashcat",
+      "OWASP Top 10",
+      "MITRE ATT&CK",
+      "CVE Research",
+      "PoC Development"
+    ]
+  },
+  {
+    id: "osint",
+    label: "OSINT",
+    color: "red",
+    icon: /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-4 h-4", children: /* @__PURE__ */ jsx("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z" }) }),
+    desc: "Open source and dark intelligence — digital footprint mapping, adversary profiling, and Tor-based threat investigations.",
+    skills: [
+      "OSINT Operations",
+      "DarkINT Research",
+      "Tor Network Investigations",
+      "Digital Footprint Analysis",
+      "Adversary Profiling",
+      "Maltego",
+      "Recon-ng",
+      "theHarvester",
+      "Shodan",
+      "Fierce",
+      "SpiderFoot",
+      "Social Media OSINT",
+      "Dark Web Monitoring",
+      "HUMINT Correlation"
+    ]
+  },
+  {
+    id: "devsecops",
+    label: "DevSecOps",
+    color: "green",
+    icon: /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-4 h-4", children: /* @__PURE__ */ jsx("path", { d: "M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" }) }),
+    desc: "Shifting security left — secure pipelines, container hardening, IaC, and cloud security posture management.",
+    skills: [
+      "AWS Security",
+      "Azure Security",
+      "GitHub Actions Security",
+      "Jenkins Security",
+      "GitLab CI/CD",
+      "Container Image Scanning",
+      "Kubernetes Security",
+      "Secrets Management",
+      "Terraform",
+      "Ansible",
+      "SAST / DAST",
+      "Dependency Scanning",
+      "Docker Hardening",
+      "Secure SDLC",
+      "IaC Security"
+    ]
+  },
+  {
+    id: "automation",
+    label: "Automation",
+    color: "green",
+    icon: /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-4 h-4", children: /* @__PURE__ */ jsx("path", { d: "M8.7 15.9L4.8 12l3.9-3.9c.39-.39.39-1.01 0-1.4-.39-.39-1.01-.39-1.4 0l-4.59 4.59c-.39.39-.39 1.02 0 1.41l4.59 4.6c.39.39 1.01.39 1.4 0 .39-.39.39-1.01 0-1.41zm6.6 0l3.9-3.9-3.9-3.9c-.39-.39-.39-1.01 0-1.4.39-.39 1.01-.39 1.4 0l4.59 4.59c.39.39.39 1.02 0 1.41l-4.59 4.6c-.39.39-1.01.39-1.4 0-.39-.39-.39-1.01 0-1.41z" }) }),
+    desc: "Security automation and scripting — from log parsing and threat intelligence enrichment to full pipeline orchestration.",
+    skills: [
+      "Python",
+      "Bash",
+      "PowerShell",
+      "Go",
+      "Rust",
+      "TypeScript",
+      "C / C++",
+      "AWK & Regex",
+      "YAML / JSON",
+      "REST API Integrations",
+      "Log Parsing",
+      "Threat Intel Enrichment",
+      "Wireshark",
+      "Zeek",
+      "Scapy",
+      "Suricata",
+      "Snort"
+    ]
+  }
+];
+const tagClass = {
+  purple: "tag-purple",
+  red: "tag-red",
+  green: "tag-green"
+};
+const textClass = {
+  purple: "text-[var(--sec)]",
+  red: "text-[var(--red)]",
+  green: "text-[var(--green)]"
+};
+const bgActiveClass = {
+  purple: "bg-[rgba(164,118,255,0.08)] border-[var(--sec)] text-[var(--sec)]",
+  red: "bg-[rgba(255,58,58,0.08)] border-[var(--red)] text-[var(--red)]",
+  green: "bg-[rgba(0,255,135,0.08)] border-[var(--green)] text-[var(--green)]"
 };
 const SkillsList = () => {
-  const [openItem, setOpenItem] = useState(null);
-  const skills = {
-    "Security Operations (SecOps)": [
-      "CrowdStrike Falcon Next-Gen SIEM — real-time monitoring, threat hunting & incident response",
-      "SIEM use case development, playbook creation, and SOAR orchestration (Falcon Fusion, Splunk SOAR)",
-      "Threat intelligence integration and security event correlation",
-      "Digital forensics, SOC operations, and MTTR reduction",
-      "Wazuh, FortiSIEM, Elastic SIEM, and Microsoft Sentinel"
-    ],
-    "Vulnerability & Patch Management": [
-      "End-to-end VPM across Windows (Server/Endpoint) and Linux (Ubuntu, Debian, SUSE, Arch)",
-      "Risk-based prioritization combining CVSS, exploitability context, and asset criticality",
-      "Post-patch validation, impact analysis, and service continuity assurance",
-      "CrowdStrike Falcon Exposure Management, Nessus, and OpenVAS (Greenbone)",
-      "Compliance-aligned governance under ISO/IEC 27001, NIST SP 800, and PCI DSS"
-    ],
-    "Penetration Testing & Red Team": [
-      "Web application and API security testing (OWASP Top 10, MITRE ATT&CK)",
-      "Network reconnaissance & exploitation: Nmap, Metasploit, Impacket, CrackMapExec",
-      "Web assessment tools: Burp Suite, OWASP ZAP, SQLmap, Gobuster, Nikto, Dirsearch",
-      "AD attack paths: BloodHound, Responder, Enum4linux, SMBMap",
-      "OSINT & recon: Maltego, Recon-ng, theHarvester, Fierce, Shodan"
-    ],
-    "Security Architecture & Defense": [
-      "Fortinet Security Fabric — FortiGate, FortiAnalyzer, FortiSIEM, FortiOS",
-      "Sophos Central, Sophos Intercept X, and Sophos Firewall administration",
-      "Zero Trust Architecture (ZTA), network segmentation, and NAC concepts",
-      "Active Directory security, privilege management, and IAM governance",
-      "Defense-in-Depth, IDS/IPS architecture, and secure hybrid infrastructure"
-    ],
-    "Cloud & DevSecOps": [
-      "AWS and Azure security posture management",
-      "Secure CI/CD pipelines with GitHub Actions, GitLab CI/CD, and Jenkins",
-      "Container image scanning, Kubernetes security policies, and secrets management",
-      "Infrastructure as Code (Terraform, Ansible) with security controls",
-      "Dependency scanning, SAST/DAST integration, and secure SDLC practices"
-    ],
-    "Programming & Automation": [
-      "Python, Bash, PowerShell — security automation and log parsing",
-      "AWK, Regex, YAML/JSON for pipeline and threat intelligence automation",
-      "Go, Rust, TypeScript, C/C++ for tooling and system-level scripting",
-      "REST API integrations for threat intelligence enrichment",
-      "Network traffic analysis tooling: Wireshark, Zeek, Scapy, Suricata, Snort"
-    ]
-  };
-  const toggleItem = (item) => {
-    setOpenItem(openItem === item ? null : item);
-  };
-  return /* @__PURE__ */ jsxs("div", { className: "text-left pt-3 md:pt-9", children: [
-    /* @__PURE__ */ jsx("h3", { className: "text-[var(--white)] text-3xl md:text-4xl font-semibold md:mb-6", children: "What I do?" }),
-    /* @__PURE__ */ jsx("ul", { className: "space-y-4 mt-4 text-lg", children: Object.entries(skills).map(([category, items]) => /* @__PURE__ */ jsx("li", { className: "w-full", children: /* @__PURE__ */ jsxs(
+  const [active, setActive] = useState("secops");
+  const current = categories.find((c) => c.id === active);
+  return /* @__PURE__ */ jsxs("div", { className: "w-full pt-3 md:pt-9", children: [
+    /* @__PURE__ */ jsxs("div", { className: "mb-5", children: [
+      /* @__PURE__ */ jsx("span", { className: "section-label mono", style: { fontFamily: "var(--mono)", fontSize: "0.7rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--sec)", opacity: 0.7 }, children: "// Capabilities" }),
+      /* @__PURE__ */ jsx("h3", { className: "text-[var(--white)] text-3xl md:text-4xl font-bold mt-1", children: "What I do" })
+    ] }),
+    /* @__PURE__ */ jsx("div", { className: "flex flex-wrap gap-2 mb-5", children: categories.map((cat) => /* @__PURE__ */ jsxs(
+      "button",
+      {
+        onClick: () => setActive(cat.id),
+        className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all duration-200 cursor-pointer mono text-xs font-medium tracking-wide ${active === cat.id ? bgActiveClass[cat.color] : "border-[rgba(255,255,255,0.08)] text-[rgba(255,255,255,0.45)] hover:border-[rgba(255,255,255,0.2)] hover:text-[rgba(255,255,255,0.7)] bg-transparent"}`,
+        style: { fontFamily: "var(--mono)" },
+        children: [
+          /* @__PURE__ */ jsx("span", { className: active === cat.id ? textClass[cat.color] : "", children: cat.icon }),
+          cat.label
+        ]
+      },
+      cat.id
+    )) }),
+    /* @__PURE__ */ jsxs(
       "div",
       {
-        onClick: () => toggleItem(category),
-        className: "md:w-[400px] w-full bg-[#1414149c] rounded-2xl text-left hover:bg-opacity-80 transition-all border border-[var(--white-icon-tr)] cursor-pointer overflow-hidden",
+        className: "terminal-window p-5 space-y-4",
+        style: {
+          borderLeft: `3px solid var(--${current.color === "purple" ? "sec" : current.color})`,
+          borderRadius: "12px"
+        },
         children: [
-          /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3 p-4", children: [
-            CategoryIcons[category],
-            /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-2 flex-grow justify-between", children: [
-              /* @__PURE__ */ jsx("div", { className: "min-w-0 max-w-[200px] md:max-w-none overflow-hidden", children: /* @__PURE__ */ jsx("span", { className: "block truncate text-[var(--white)] text-lg", children: category }) }),
-              /* @__PURE__ */ jsx(
-                "svg",
-                {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  viewBox: "0 0 24 24",
-                  fill: "currentColor",
-                  className: `w-6 h-6 text-[var(--white)] transform transition-transform flex-shrink-0 ${openItem === category ? "rotate-180" : ""}`,
-                  children: /* @__PURE__ */ jsx("path", { d: "M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z" })
-                }
-              )
-            ] })
+          /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-between", children: [
+            /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-2", children: [
+              /* @__PURE__ */ jsx("span", { className: `${textClass[current.color]}`, children: current.icon }),
+              /* @__PURE__ */ jsx("span", { className: "text-[var(--white)] font-semibold text-base", children: categories.find((c) => c.id === active)?.label === "VPM" ? "Vulnerability & Patch Management" : categories.find((c) => c.id === active)?.label === "OSINT" ? "OSINT & DarkINT Intelligence" : categories.find((c) => c.id === active)?.label === "SecOps" ? "Security Operations" : categories.find((c) => c.id === active)?.label === "Pentesting" ? "Penetration Testing & Red Team" : categories.find((c) => c.id === active)?.label === "DevSecOps" ? "DevSecOps & Cloud Security" : "Programming & Automation" })
+            ] }),
+            /* @__PURE__ */ jsxs(
+              "span",
+              {
+                className: `mono text-xs px-2 py-0.5 rounded ${tagClass[current.color]}`,
+                style: { fontFamily: "var(--mono)" },
+                children: [
+                  current.skills.length,
+                  " skills"
+                ]
+              }
+            )
           ] }),
-          /* @__PURE__ */ jsx(
-            "div",
+          /* @__PURE__ */ jsx("p", { className: "text-sm text-[rgba(255,255,255,0.55)] leading-relaxed", style: { fontFamily: "var(--mono)" }, children: current.desc }),
+          /* @__PURE__ */ jsx("div", { className: "flex flex-wrap gap-1.5", children: current.skills.map((skill) => /* @__PURE__ */ jsx(
+            "span",
             {
-              className: `transition-all duration-300 px-4 ${openItem === category ? "max-h-[500px] pb-4 opacity-100" : "max-h-0 opacity-0"}`,
-              children: /* @__PURE__ */ jsx("ul", { className: "space-y-2 text-[var(--white-icon)] text-sm", children: items.map((item, index) => /* @__PURE__ */ jsxs("div", { className: "flex items-center", children: [
-                /* @__PURE__ */ jsx("span", { className: "pl-1", children: "•" }),
-                /* @__PURE__ */ jsx("li", { className: "pl-3", children: item })
-              ] }, index)) })
-            }
-          )
+              className: `mono text-xs px-2.5 py-1 rounded-lg ${tagClass[current.color]}`,
+              style: { fontFamily: "var(--mono)" },
+              children: skill
+            },
+            skill
+          )) })
         ]
       }
-    ) }, category)) })
+    )
   ] });
 };
 
@@ -424,13 +330,13 @@ GitHub
 LinkedIn
 </a> <a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to=joscalion04@gmail.com&su=Hey%20Joseph!" aria-label="Email" class="flex items-center gap-2 text-[var(--white-icon)] hover:text-white transition-all duration-200 border border-[var(--white-icon-tr)] px-4 py-2 rounded-xl bg-[#1414149c] hover:border-[var(--sec)] hover:bg-[#1e1e2e] text-sm mono"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 shrink-0"> <path d="m18.73 5.41l-1.28 1L12 10.46L6.55 6.37l-1.28-1A2 2 0 0 0 2 7.05v11.59A1.36 1.36 0 0 0 3.36 20h3.19v-7.72L12 16.37l5.45-4.09V20h3.19A1.36 1.36 0 0 0 22 18.64V7.05a2 2 0 0 0-3.27-1.64"></path> </svg>
 Contact
-</a> </div> </div> <!-- LetterGlitch --> <div class="flex justify-center md:justify-end md:w-[300px] md:h-[300px] w-full h-[240px] shrink-0"> ${renderComponent($$result, "LetterGlitch", LetterGlitch, { "client:load": true, "glitchColors": ["#3d1f6e", "#a476ff", "#1a0d2e"], "glitchSpeed": 28, "centerVignette": false, "outerVignette": true, "smooth": true, "client:component-hydration": "load", "client:component-path": "/home/joseph/Documents/Projects/Portfolio/src/React/LetterGlitch.tsx", "client:component-export": "default" })} </div> </div> <!-- Stats row --> <div class="flex flex-wrap gap-3 pt-2"> ${[
+</a> </div> </div> </div> <!-- Stats row --> <div class="flex flex-wrap gap-3 pt-2"> ${[
     { label: "2+ yrs", sub: "SecOps" },
     { label: "HackerOne", sub: "Bug Bounty" },
     { label: "OSINT", sub: "& DarkINT" },
     { label: "ISO 27001", sub: "Aligned" },
     { label: "PCI DSS", sub: "& NIST" }
-  ].map((s) => renderTemplate`<div class="flex items-center gap-2 border border-[var(--white-icon-tr)] rounded-lg px-3 py-2 bg-[#0d0d1660]"> <span class="mono text-sm font-bold text-[var(--sec)]">${s.label}</span> <span class="text-xs text-[var(--white-icon)]">${s.sub}</span> </div>`)} </div> </div> <!-- Arsenal / Logo Wall --> <div> <div class="flex items-center gap-3 mb-4"> <span class="section-label">// Arsenal</span> <div class="flex-1 h-px bg-[var(--white-icon-tr)]"></div> </div> ${renderComponent($$result, "LogoWall", $$LogoWall, {})} </div> <!-- Skills --> <div class="flex flex-col lg:flex-row items-start gap-8"> ${renderComponent($$result, "SkillsList", SkillsList, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/joseph/Documents/Projects/Portfolio/src/React/SkillsList.tsx", "client:component-export": "default" })} <div class="flex justify-center md:w-full md:h-[292px] size-[290px] pt-3 md:pt-0 md:ml-8 shrink-0"> ${renderComponent($$result, "LetterGlitch", LetterGlitch, { "client:load": true, "glitchColors": ["#5e4491", "#A476FF", "#241a38"], "glitchSpeed": 33, "centerVignette": false, "outerVignette": true, "smooth": true, "client:component-hydration": "load", "client:component-path": "/home/joseph/Documents/Projects/Portfolio/src/React/LetterGlitch.tsx", "client:component-export": "default" })} </div> </div> </div> </section>`;
+  ].map((s) => renderTemplate`<div class="flex items-center gap-2 border border-[var(--white-icon-tr)] rounded-lg px-3 py-2 bg-[#0d0d1660]"> <span class="mono text-sm font-bold text-[var(--sec)]">${s.label}</span> <span class="text-xs text-[var(--white-icon)]">${s.sub}</span> </div>`)} </div> </div> <!-- Arsenal / Logo Wall --> <div> <div class="flex items-center gap-3 mb-4"> <span class="section-label">// Arsenal</span> <div class="flex-1 h-px bg-[var(--white-icon-tr)]"></div> </div> ${renderComponent($$result, "LogoWall", $$LogoWall, {})} </div> <!-- Skills --> <div class="w-full"> ${renderComponent($$result, "SkillsList", SkillsList, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/joseph/Documents/Projects/Portfolio/src/React/SkillsList.tsx", "client:component-export": "default" })} </div> </div> </section>`;
 }, "/home/joseph/Documents/Projects/Portfolio/src/components/home.astro", void 0);
 
 const pcapImg = new Proxy({"src":"/_astro/snypshark-example.DDqdCZyL.png","width":601,"height":412,"format":"png"}, {
@@ -794,6 +700,23 @@ const $$Experience = createComponent(($$result, $$props, $$slots) => {
       ],
       type: "professional",
       skills: ["CrowdStrike Falcon", "SIEM/SOAR", "VPM", "ISO 27001", "NIST SP 800", "PCI DSS", "Incident Response", "Threat Hunting", "SecOps"]
+    },
+    {
+      title: "Security Software Engineer",
+      company: "Serkes Consulting",
+      companyType: "Full-time",
+      period: "Jun 2025 \u2013 Nov 2025",
+      location: "Costa Rica",
+      badgeColor: "gray",
+      description: [
+        "Implemented container security controls across Dockerized environments, enforcing image hardening, least-privilege policies, and runtime protection.",
+        "Designed and applied security measures for banking transaction flows within backend applications \u2014 ensuring data integrity, secure session handling, and encrypted communication channels.",
+        "Managed secrets and cryptographic key lifecycles using vault solutions integrated into CI/CD pipelines, preventing key exposure and enforcing rotation policies.",
+        "Handled sensitive data governance: classification, encryption at rest and in transit, access control, and audit logging aligned with financial security standards.",
+        "Hardened Angular frontend applications using WAF-oriented techniques \u2014 implementing input sanitization, Content Security Policy (CSP), and protection against XSS, SQL injection, CSRF, and clickjacking attacks."
+      ],
+      type: "professional",
+      skills: ["Container Security", "Vault / Secrets Management", "Secure Banking Apps", "Angular Hardening", "WAF / XSS / SQLi", "CSP", "Sensitive Data Handling", "CI/CD Security", "Docker"]
     },
     {
       title: "Security Engineer",

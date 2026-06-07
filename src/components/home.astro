@@ -1,5 +1,4 @@
 ---
-import LetterGlitch from "../React/LetterGlitch.tsx";
 import LogoWall from "../components/logoWall.astro";
 import SkillsList from "../React/SkillsList.tsx";
 ---
@@ -63,18 +62,6 @@ import SkillsList from "../React/SkillsList.tsx";
             </a>
           </div>
         </div>
-
-        <!-- LetterGlitch -->
-        <div class="flex justify-center md:justify-end md:w-[300px] md:h-[300px] w-full h-[240px] shrink-0">
-          <LetterGlitch
-            client:load
-            glitchColors={["#3d1f6e", "#a476ff", "#1a0d2e"]}
-            glitchSpeed={28}
-            centerVignette={false}
-            outerVignette={true}
-            smooth={true}
-          />
-        </div>
       </div>
 
       <!-- Stats row -->
@@ -104,18 +91,8 @@ import SkillsList from "../React/SkillsList.tsx";
     </div>
 
     <!-- Skills -->
-    <div class="flex flex-col lg:flex-row items-start gap-8">
+    <div class="w-full">
       <SkillsList client:load />
-      <div class="flex justify-center md:w-full md:h-[292px] size-[290px] pt-3 md:pt-0 md:ml-8 shrink-0">
-        <LetterGlitch
-          client:load
-          glitchColors={["#5e4491", "#A476FF", "#241a38"]}
-          glitchSpeed={33}
-          centerVignette={false}
-          outerVignette={true}
-          smooth={true}
-        />
-      </div>
     </div>
 
   </div>

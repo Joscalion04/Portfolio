@@ -5,6 +5,7 @@ import socImg from "../../public/soc-example.png";
 import lamp from "../../public/lamp-example.png";
 import ldap from "../../public/OpenLDAP-example.png";
 import cicd from "../../public/ci_cd-example.png";
+import offsec from "../../public/offsecAssistant.png";
 
 interface Operation {
   codename: string;
@@ -24,12 +25,19 @@ const operations: Operation[] = [
   {
     codename: "OP-001",
     title: "OffsecAssistant — AI Security Agent",
-    image: socImg as ImageMetadata,
-    description: "AI agent designed to assist offensive security operations — automating reconnaissance workflows, threat modeling, vulnerability correlation, and generating structured pentest reports. Integrates LLM capabilities with offensive security toolchains.",
+    image: offsec as ImageMetadata,
+    description:
+      "AI agent designed to assist offensive security operations — automating reconnaissance workflows, threat modeling, vulnerability correlation, and generating structured pentest reports. Integrates LLM capabilities with offensive security toolchains.",
     type: "AI · Offensive Security",
     typeColor: "red",
     status: "ACTIVE",
-    tags: ["AI Agent", "LLM", "Offensive Security", "Automation", "Pentest Workflow"],
+    tags: [
+      "AI Agent",
+      "LLM",
+      "Offensive Security",
+      "Automation",
+      "Pentest Workflow",
+    ],
     link: "https://github.com/Joscalion04",
     preview: "https://github.com/Joscalion04",
     featured: true,
@@ -38,7 +46,8 @@ const operations: Operation[] = [
     codename: "OP-002",
     title: "SNYPSHARK — Network PCAP Analyzer",
     image: pcapImg as ImageMetadata,
-    description: "Python CLI tool for deep analysis of network captures (.pcap/.pcapng) with full OSI layer breakdown, protocol statistics, anomaly flagging, and threat indicator extraction.",
+    description:
+      "Python CLI tool for deep analysis of network captures (.pcap/.pcapng) with full OSI layer breakdown, protocol statistics, anomaly flagging, and threat indicator extraction.",
     type: "Network Security",
     typeColor: "purple",
     status: "COMPLETED",
@@ -51,52 +60,57 @@ const operations: Operation[] = [
     codename: "OP-003",
     title: "Virtualized Network — LDAP, iptables & LAMP",
     image: ldap as ImageMetadata,
-    description: "4-VM virtualized network environment with iptables firewall, OpenLDAP identity management, LAMP server, and client nodes. Configured RBAC, traffic inspection, and security policy enforcement.",
+    description:
+      "4-VM virtualized network environment with iptables firewall, OpenLDAP identity management, LAMP server, and client nodes. Configured RBAC, traffic inspection, and security policy enforcement.",
     type: "Infrastructure Security",
     typeColor: "purple",
     status: "COMPLETED",
-    tags: ["OpenLDAP", "iptables", "RBAC", "Virtualization", "Network Hardening"],
+    tags: [
+      "OpenLDAP",
+      "iptables",
+      "RBAC",
+      "Virtualization",
+      "Network Hardening",
+    ],
     link: "https://www.linkedin.com/in/joscalion/details/projects/1756176969204/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
-    preview: "https://www.linkedin.com/in/joscalion/details/projects/1756176969204/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
+    preview:
+      "https://www.linkedin.com/in/joscalion/details/projects/1756176969204/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
     featured: false,
   },
   {
     codename: "OP-004",
     title: "Secure LAMP + Nextcloud + Traffic Analysis",
     image: lamp as ImageMetadata,
-    description: "Hardened LAMP stack with Nextcloud on VirtualBox. Implemented Apache WAF rules, SSL/TLS configuration, and conducted network traffic analysis with Wireshark to validate security controls.",
+    description:
+      "Hardened LAMP stack with Nextcloud on VirtualBox. Implemented Apache WAF rules, SSL/TLS configuration, and conducted network traffic analysis with Wireshark to validate security controls.",
     type: "Hardening & Analysis",
     typeColor: "purple",
     status: "COMPLETED",
     tags: ["LAMP", "Nextcloud", "Apache", "SSL/TLS", "Wireshark", "WAF"],
     link: "https://www.linkedin.com/in/joscalion/details/projects/1743371783472/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
-    preview: "https://www.linkedin.com/in/joscalion/details/projects/1743371783472/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
+    preview:
+      "https://www.linkedin.com/in/joscalion/details/projects/1743371783472/single-media-viewer/?profileId=ACoAADo_jh4BCQfhm55eWhF0w-w0jnZ11lv9EUk",
     featured: false,
   },
   {
     codename: "OP-005",
     title: "Hardened CI/CD — Jenkins, Docker & Kubernetes",
     image: cicd as ImageMetadata,
-    description: "Secure CI/CD pipeline with integrated security gates: container image scanning, SAST checks, secrets detection, and automated compliance validation on every push.",
+    description:
+      "Secure CI/CD pipeline with integrated security gates: container image scanning, SAST checks, secrets detection, and automated compliance validation on every push.",
     type: "DevSecOps",
     typeColor: "green",
     status: "COMPLETED",
-    tags: ["Jenkins", "Docker", "Kubernetes", "SAST", "Container Scanning", "DevSecOps"],
+    tags: [
+      "Jenkins",
+      "Docker",
+      "Kubernetes",
+      "SAST",
+      "Container Scanning",
+      "DevSecOps",
+    ],
     link: "",
     preview: "",
-    featured: false,
-  },
-  {
-    codename: "OP-006",
-    title: "Production Security Platform",
-    image: socImg as ImageMetadata,
-    description: "Secure billing and accounting platform in production. Applied WAF rules, RBAC, hardened CI/CD, Wazuh-based monitoring, and continuous vulnerability scanning. Confidential enterprise deployment.",
-    type: "SecOps · Production",
-    typeColor: "gray",
-    status: "CLASSIFIED",
-    tags: ["Wazuh", "WAF", "RBAC", "Monitoring", "Confidential"],
-    link: "",
-    preview: "https://drive.google.com/file/d/1UmnxfwXnA_mU_yGjjtnvXGayFwNbqYqH/view?usp=drive_link",
     featured: false,
   },
 ];
@@ -109,9 +123,11 @@ const statusColors = {
 };
 ---
 
-<section id="operations" class="py-20 border-t border-[#ffffff10] text-[var(--white)]">
+<section
+  id="operations"
+  class="py-20 border-t border-[#ffffff10] text-[var(--white)]"
+>
   <div class="max-w-5xl mx-auto">
-
     <div class="flex items-center gap-3 mb-2">
       <span class="section-label">// Field Operations</span>
       <div class="flex-1 h-px bg-[var(--white-icon-tr)]"></div>
@@ -121,106 +137,180 @@ const statusColors = {
 
     <!-- Featured operations -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-      {operations.filter(op => op.featured).map((op) => (
-        <div class="terminal-window group hover:border-[var(--sec)] transition-all duration-300 hover:shadow-[0_0_24px_rgba(164,118,255,0.08)]">
-          <div class="terminal-titlebar justify-between">
-            <div class="flex items-center gap-2">
-              <span class="terminal-dot bg-[#ff5f57]"></span>
-              <span class="terminal-dot bg-[#ffbd2e]"></span>
-              <span class="terminal-dot bg-[#28c840]"></span>
-            </div>
-            <span class={`mono text-xs px-2 py-0.5 rounded ${statusColors[op.status]}`}>{op.status}</span>
-          </div>
-          <div class="overflow-hidden">
-            <Image
-              src={op.image}
-              alt={op.title}
-              class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
-            />
-          </div>
-          <div class="p-5 space-y-3">
-            <div class="flex items-start justify-between gap-2">
-              <div>
-                <span class={`mono text-xs px-2 py-0.5 rounded ${op.typeColor === 'red' ? 'tag-red' : op.typeColor === 'green' ? 'tag-green' : 'tag-purple'}`}>{op.type}</span>
-                <h4 class="text-lg font-bold mt-2">{op.title}</h4>
+      {
+        operations
+          .filter((op) => op.featured)
+          .map((op) => (
+            <div class="terminal-window group hover:border-[var(--sec)] transition-all duration-300 hover:shadow-[0_0_24px_rgba(164,118,255,0.08)]">
+              <div class="terminal-titlebar justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="terminal-dot bg-[#ff5f57]" />
+                  <span class="terminal-dot bg-[#ffbd2e]" />
+                  <span class="terminal-dot bg-[#28c840]" />
+                </div>
+                <span
+                  class={`mono text-xs px-2 py-0.5 rounded ${statusColors[op.status]}`}
+                >
+                  {op.status}
+                </span>
               </div>
-              <span class="mono text-xs text-[var(--white-icon)] opacity-40 shrink-0">{op.codename}</span>
+              <div class="overflow-hidden">
+                <Image
+                  src={op.image}
+                  alt={op.title}
+                  class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+                />
+              </div>
+              <div class="p-5 space-y-3">
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <span
+                      class={`mono text-xs px-2 py-0.5 rounded ${op.typeColor === "red" ? "tag-red" : op.typeColor === "green" ? "tag-green" : "tag-purple"}`}
+                    >
+                      {op.type}
+                    </span>
+                    <h4 class="text-lg font-bold mt-2">{op.title}</h4>
+                  </div>
+                  <span class="mono text-xs text-[var(--white-icon)] opacity-40 shrink-0">
+                    {op.codename}
+                  </span>
+                </div>
+                <p class="text-sm text-[var(--white-icon)] leading-relaxed">
+                  {op.description}
+                </p>
+                <div class="flex flex-wrap gap-1.5">
+                  {op.tags.map((tag) => (
+                    <span class="mono text-xs px-2 py-0.5 rounded tag-gray">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div class="flex gap-2 pt-1">
+                  {op.link && (
+                    <a
+                      href={op.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex items-center gap-1.5 text-xs mono text-[var(--white-icon)] hover:text-[var(--sec)] transition-colors border border-[var(--white-icon-tr)] px-3 py-1.5 rounded-lg hover:border-[var(--sec)]"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="size-3"
+                      >
+                        <path d="M24 12L18.3431 17.6569L16.9289 16.2426L21.1716 12L16.9289 7.75736L18.3431 6.34315L24 12ZM2.82843 12L7.07107 16.2426L5.65685 17.6569L0 12L5.65685 6.34315L7.07107 7.75736L2.82843 12ZM9.78845 21H7.66009L14.2116 3H16.3399L9.78845 21Z" />
+                      </svg>
+                      Repo
+                    </a>
+                  )}
+                  {op.preview && (
+                    <a
+                      href={op.preview}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex items-center gap-1.5 text-xs mono text-[var(--white-icon)] hover:text-[var(--sec)] transition-colors border border-[var(--white-icon-tr)] px-3 py-1.5 rounded-lg hover:border-[var(--sec)]"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="size-3"
+                      >
+                        <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
+                      </svg>
+                      View
+                    </a>
+                  )}
+                </div>
+              </div>
             </div>
-            <p class="text-sm text-[var(--white-icon)] leading-relaxed">{op.description}</p>
-            <div class="flex flex-wrap gap-1.5">
-              {op.tags.map(tag => (
-                <span class="mono text-xs px-2 py-0.5 rounded tag-gray">{tag}</span>
-              ))}
-            </div>
-            <div class="flex gap-2 pt-1">
-              {op.link && (
-                <a href={op.link} target="_blank" rel="noopener noreferrer"
-                  class="flex items-center gap-1.5 text-xs mono text-[var(--white-icon)] hover:text-[var(--sec)] transition-colors border border-[var(--white-icon-tr)] px-3 py-1.5 rounded-lg hover:border-[var(--sec)]">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-3">
-                    <path d="M24 12L18.3431 17.6569L16.9289 16.2426L21.1716 12L16.9289 7.75736L18.3431 6.34315L24 12ZM2.82843 12L7.07107 16.2426L5.65685 17.6569L0 12L5.65685 6.34315L7.07107 7.75736L2.82843 12ZM9.78845 21H7.66009L14.2116 3H16.3399L9.78845 21Z"/>
-                  </svg>
-                  Repo
-                </a>
-              )}
-              {op.preview && (
-                <a href={op.preview} target="_blank" rel="noopener noreferrer"
-                  class="flex items-center gap-1.5 text-xs mono text-[var(--white-icon)] hover:text-[var(--sec)] transition-colors border border-[var(--white-icon-tr)] px-3 py-1.5 rounded-lg hover:border-[var(--sec)]">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-3">
-                    <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"/>
-                  </svg>
-                  View
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-      ))}
+          ))
+      }
     </div>
 
     <!-- Other operations list -->
     <div class="space-y-3">
-      {operations.filter(op => !op.featured).map((op) => (
-        <div class="flex flex-col md:flex-row gap-4 bg-[var(--terminal-bg)] border border-[rgba(255,255,255,0.06)] rounded-xl p-4 hover:border-[rgba(164,118,255,0.2)] transition-all duration-300 group">
-          <div class="md:w-32 h-20 md:h-auto rounded-lg overflow-hidden shrink-0">
-            <Image src={op.image} alt={op.title} class="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300"/>
-          </div>
-          <div class="flex-1 space-y-2">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="mono text-xs text-[var(--white-icon)] opacity-40">{op.codename}</span>
-              <span class={`mono text-xs px-2 py-0.5 rounded ${op.typeColor === 'red' ? 'tag-red' : op.typeColor === 'green' ? 'tag-green' : op.typeColor === 'gray' ? 'tag-gray' : 'tag-purple'}`}>{op.type}</span>
-              <span class={`mono text-xs px-2 py-0.5 rounded ml-auto ${statusColors[op.status]}`}>{op.status}</span>
+      {
+        operations
+          .filter((op) => !op.featured)
+          .map((op) => (
+            <div class="flex flex-col md:flex-row gap-4 bg-[var(--terminal-bg)] border border-[rgba(255,255,255,0.06)] rounded-xl p-4 hover:border-[rgba(164,118,255,0.2)] transition-all duration-300 group">
+              <div class="md:w-32 h-20 md:h-auto rounded-lg overflow-hidden shrink-0">
+                <Image
+                  src={op.image}
+                  alt={op.title}
+                  class="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300"
+                />
+              </div>
+              <div class="flex-1 space-y-2">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="mono text-xs text-[var(--white-icon)] opacity-40">
+                    {op.codename}
+                  </span>
+                  <span
+                    class={`mono text-xs px-2 py-0.5 rounded ${op.typeColor === "red" ? "tag-red" : op.typeColor === "green" ? "tag-green" : op.typeColor === "gray" ? "tag-gray" : "tag-purple"}`}
+                  >
+                    {op.type}
+                  </span>
+                  <span
+                    class={`mono text-xs px-2 py-0.5 rounded ml-auto ${statusColors[op.status]}`}
+                  >
+                    {op.status}
+                  </span>
+                </div>
+                <h4 class="font-semibold">{op.title}</h4>
+                <p class="text-sm text-[var(--white-icon)]">{op.description}</p>
+                <div class="flex flex-wrap gap-1.5">
+                  {op.tags.slice(0, 4).map((tag) => (
+                    <span class="mono text-xs px-2 py-0.5 rounded tag-gray">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div class="flex md:flex-col gap-2 md:justify-center shrink-0">
+                {op.link && (
+                  <a
+                    href={op.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center justify-center gap-1 text-xs mono text-[var(--white-icon)] hover:text-[var(--sec)] transition-colors border border-[var(--white-icon-tr)] px-3 py-1.5 rounded-lg hover:border-[var(--sec)]"
+                  >
+                    Repo
+                  </a>
+                )}
+                {op.preview && (
+                  <a
+                    href={op.preview}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center justify-center gap-1 text-xs mono text-[var(--white-icon)] hover:text-[var(--sec)] transition-colors border border-[var(--white-icon-tr)] px-3 py-1.5 rounded-lg hover:border-[var(--sec)]"
+                  >
+                    View
+                  </a>
+                )}
+              </div>
             </div>
-            <h4 class="font-semibold">{op.title}</h4>
-            <p class="text-sm text-[var(--white-icon)]">{op.description}</p>
-            <div class="flex flex-wrap gap-1.5">
-              {op.tags.slice(0, 4).map(tag => (
-                <span class="mono text-xs px-2 py-0.5 rounded tag-gray">{tag}</span>
-              ))}
-            </div>
-          </div>
-          <div class="flex md:flex-col gap-2 md:justify-center shrink-0">
-            {op.link && (
-              <a href={op.link} target="_blank" rel="noopener noreferrer"
-                class="flex items-center justify-center gap-1 text-xs mono text-[var(--white-icon)] hover:text-[var(--sec)] transition-colors border border-[var(--white-icon-tr)] px-3 py-1.5 rounded-lg hover:border-[var(--sec)]">
-                Repo
-              </a>
-            )}
-            {op.preview && (
-              <a href={op.preview} target="_blank" rel="noopener noreferrer"
-                class="flex items-center justify-center gap-1 text-xs mono text-[var(--white-icon)] hover:text-[var(--sec)] transition-colors border border-[var(--white-icon-tr)] px-3 py-1.5 rounded-lg hover:border-[var(--sec)]">
-                View
-              </a>
-            )}
-          </div>
-        </div>
-      ))}
+          ))
+      }
     </div>
 
-    <a target="_blank" href="https://github.com/Joscalion04?tab=repositories"
-      class="w-full flex items-center justify-center gap-2 mt-8 text-[var(--white-icon)] hover:text-white transition-all duration-200 border border-[var(--white-icon-tr)] py-3 px-6 rounded-full bg-[#1414149c] hover:border-[var(--sec)] hover:bg-[#1e1e2e] mono text-sm tracking-widest uppercase">
+    <a
+      target="_blank"
+      href="https://github.com/Joscalion04?tab=repositories"
+      class="w-full flex items-center justify-center gap-2 mt-8 text-[var(--white-icon)] hover:text-white transition-all duration-200 border border-[var(--white-icon-tr)] py-3 px-6 rounded-full bg-[#1414149c] hover:border-[var(--sec)] hover:bg-[#1e1e2e] mono text-sm tracking-widest uppercase"
+    >
       All repositories on GitHub
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
-        <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"/>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="size-4"
+      >
+        <path
+          d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"
+        ></path>
       </svg>
     </a>
   </div>
